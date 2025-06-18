@@ -1,0 +1,14 @@
+
+file_format: "1"
+id: surround1x0_akdk
+name: surround1x0_akdk
+type: shield
+features:
+  - keys
+  - studio
+outputs:
+  - usb
+  - ble
+siblings:
+  - surround1x0_akdk_left
+  - surround1x0_akdk_right

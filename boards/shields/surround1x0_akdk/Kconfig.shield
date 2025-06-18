@@ -1,0 +1,4 @@
+config SHIELD_SURROUND1X0_AKDK_LEFT
+    def_bool $(shields_list_contains,surround1x0_akdk_left)
+config SHIELD_SURROUND1X0_AKDK_RIGHT
+    def_bool $(shields_list_contains,surround1x0_akdk_right)

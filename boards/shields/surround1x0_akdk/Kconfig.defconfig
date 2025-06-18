@@ -1,0 +1,14 @@
+
+if SHIELD_SURROUND1X0_AKDK_RIGHT
+
+config ZMK_KEYBOARD_NAME
+    default "surround1x0_akdk"
+
+endif
+
+if SHIELD_SURROUND1X0_AKDK_LEFT || SHIELD_SURROUND1X0_AKDK_RIGHT
+
+config ZMK_SPLIT
+    default y
+
+endif
