@@ -55,13 +55,13 @@
     };
 
     behaviors {
-        mkpLR: mkpLR {
+        multiMkp: multiMkp {
             compatible = "zmk,behavior-hold-tap";
-            label = "MKPLR";
+            label = "MULTIMKP";
             bindings = <&mkp>, <&mkp>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <3>;
+            tapping-term-ms = <300>;
         };
     };
 
@@ -72,11 +72,11 @@
 
         Default {
             bindings = <
-&mt ESC Q       &kp L  &kp U  &kp COMMA  &kp PERIOD     &kp LG(S)                  &kp RG(D)      &kp F  &kp W  &kp R  &kp Y  &kp P
-&mt CAPS LC(E)  &kp I  &kp A  &kp O      &kp MINUS      &lt 3 TAB                  &kp RG(V)      &kp K  &kp T  &kp N  &kp S  &kp H
-&mt LSHIFT Z    &kp X  &kp C  &kp V      &kp SEMICOLON  &mo 2                      &kp RG(C)      &kp G  &kp D  &kp M  &kp J  &mt LSHIFT B
-                              &kp RCTRL  &kp RALT       &mkpLR MB2 MB1  &kp LANG1  &kp BACKSPACE
-                                         &kp LGUI       &tog 1          &kp LANG2  &kp SPACE
+&mt ESC Q     &kp L  &kp U  &kp COMMA  &kp PERIOD     &kp LG(S)                                &kp RG(D)       &kp F  &kp W  &kp R  &kp Y  &kp P
+&mt CAPS E    &kp I  &kp A  &kp O      &kp MINUS      &lt 3 TAB                                &kp RG(V)       &kp K  &kp T  &kp N  &kp S  &kp H
+&mt LSHIFT Z  &kp X  &kp C  &kp V      &kp SEMICOLON  &mo 2                                    &kp RG(C)       &kp G  &kp D  &kp M  &kp J  &mt LSHIFT B
+                            &kp RCTRL  &kp RALT       &multiMkp MB2 MB1  &kp LANGUAGE_2        &kp LANGUAGE_1
+                                       &kp LGUI       &tog 1             &mt DELETE BACKSPACE  &kp SPACE
             >;
         };
 
