@@ -17,6 +17,7 @@
         // 全レイヤーをリセットするビヘイビア定義
         reset_layers: reset_layers {
             compatible = "zmk,behavior-reset-layer-state";
+            #binding-cells = <0>;
         };
     };
     combos {
