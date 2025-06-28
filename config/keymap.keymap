@@ -16,6 +16,8 @@
     combos {
         compatible = "zmk,combos";
 
+        combo-term-ms = <100>;
+
         // コンボ定義:
         // 特定のキーを同時押ししたときの動作を定義
 
