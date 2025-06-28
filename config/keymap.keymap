@@ -12,14 +12,7 @@
 // - function: ファンクションキー (F1〜F12)
 // - bt: Bluetoothデバイス選択と切替操作
 
-/ {
-    behaviors {
-        // 全レイヤーをリセットするビヘイビア定義
-        reset_layers: reset_layers {
-            compatible = "zmk,behavior-reset-layer-state";
-            #binding-cells = <0>;
-        };
-    };
+/
     combos {
         compatible = "zmk,combos";
 
@@ -52,7 +45,7 @@
 
         // すべてのレイヤーを無効化してデフォルトレイヤーに戻す
         resetAll {
-            bindings = <&reset_layers>;
+            bindings = <&to 0>;
             key-positions = <12 40>;
         };
     };
