@@ -13,6 +13,12 @@
 // - bt: Bluetoothデバイス選択と切替操作
 
 / {
+    behaviors {
+        // 全レイヤーをリセットするビヘイビア定義
+        reset_layers: reset_layers {
+            compatible = "zmk,behavior-reset-layer-state";
+        };
+    };
     combos {
         compatible = "zmk,combos";
 
