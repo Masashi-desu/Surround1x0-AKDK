@@ -15,7 +15,6 @@
 / {
     combos {
         compatible = "zmk,combos";
-
         combo-term-ms = <100>;
 
         // コンボ定義:
@@ -45,7 +44,7 @@
 
         btSettings {
             bindings = <&mo 5>;
-            key-positions = <5 17 29 17 29>;
+            key-positions = <0 12 24>;
         };
 
         // すべてのレイヤーを無効化してデフォルトレイヤーに戻す
