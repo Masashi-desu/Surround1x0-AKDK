@@ -3,91 +3,119 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
 
+// ZMK用のキーマップ設定ファイル
+// レイヤー構成:
+// - Default: 通常のタイピング用
+// - Move: カーソル移動・スクロール・マウス入力用
+// - Char: 記号や括弧などの入力用
+// - num: 数字入力・テンキー配列
+// - function: ファンクションキー (F1〜F12)
+// - bt: Bluetoothデバイス選択と切替操作
+
 / {
     combos {
         compatible = "zmk,combos";
 
+        // コンボ定義:
+        // 特定のキーを同時押ししたときの動作を定義
+
+        // 数字レイヤーをトグル
         numTog {
             bindings = <&tog 3>;
             key-positions = <15 20>;
         };
 
+        // ファンクションレイヤーをトグル
         fnTog {
             bindings = <&tog 4>;
             key-positions = <0 11>;
         };
 
+        // Enterキー入力
         ent {
             bindings = <&kp ENTER>;
             key-positions = <42 44>;
         };
 
+        // Bluetooth設定レイヤーに一時移動
         btSettings {
             bindings = <&mo 5>;
             key-positions = <5 17 29 17 29>;
+        };
+
+        // すべてのレイヤーを無効化してデフォルトレイヤーに戻す
+        resetAll {
+            bindings = <&reset_layers>;
+            key-positions = <12 40>;
         };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
+        // デフォルトレイヤー: 通常のタイピングに使用
         Default {
             bindings = <
-&mt ESC Q     &kp W  &kp E  &kp R      &kp T     &kp LG(S)             &kp RG(D)      &kp Y  &kp U  &kp I      &kp O      &kp P
-&mt CAPS A    &kp S  &kp D  &kp F      &kp G     &lt 3 TAB             &kp RG(V)      &kp H  &kp J  &kp K      &kp L      &kp ENTER
-&mt LSHIFT Z  &kp X  &kp C  &kp V      &kp B     &mo 2                 &kp RG(C)      &kp N  &kp M  &mkp LCLK  &mkp RCLK  &kp RSHIFT
-                            &kp RCTRL  &kp RALT  &kp TAB    &kp LANG1  &kp BACKSPACE
-                                       &kp LGUI  &tog 1     &kp LANG2  &kp SPACE
+            &mt ESC Q     &kp W  &kp E  &kp R      &kp T     &kp LG(S)             &kp RG(D)      &kp Y  &kp U  &kp I      &kp O      &kp P
+            &mt CAPS A    &kp S  &kp D  &kp F      &kp G     &lt 3 TAB             &kp RG(V)      &kp H  &kp J  &kp K      &kp L      &kp ENTER
+            &mt LSHIFT Z  &kp X  &kp C  &kp V      &kp B     &mo 2                 &kp RG(C)      &kp N  &kp M  &mkp LCLK  &mkp RCLK  &kp RSHIFT
+                                        &kp RCTRL  &kp RALT  &kp TAB               &kp LANG1  &kp BACKSPACE
+                                                   &kp LGUI  &tog 1                &kp LANG2  &kp SPACE
             >;
         };
 
+        // Moveレイヤー: カーソルキー・マウス・スクロール操作を割り当て
         Move {
             bindings = <
-&kp ESCAPE      &none     &kp UP_ARROW    &none      &none   &none                     &none            &none  &kp RCTRL  &kp RIGHT_ALT  &kp RIGHT_GUI  &kp LSHIFT
-&none           &kp LEFT  &kp DOWN_ARROW  &kp RIGHT  &none   &msc SCRL_LEFT            &msc SCRL_RIGHT  &none  &mkp MB1   &mkp MB2       &none          &mkp MB3
-&kp LEFT_SHIFT  &none     &none           &none      &none   &none                     &none            &none  &none      &none          &none          &kp RSHIFT
-                                          &trans     &trans  &trans          &mkp MB5  &msc SCRL_UP
-                                                     &trans  &trans          &mkp MB4  &msc SCRL_DOWN
+            &kp ESCAPE      &none     &kp UP_ARROW    &none      &none   &none                     &none            &none  &kp RCTRL  &kp RIGHT_ALT  &kp RIGHT_GUI  &kp LSHIFT
+            &none           &kp LEFT  &kp DOWN_ARROW  &kp RIGHT  &none   &msc SCRL_LEFT            &msc SCRL_RIGHT  &none  &mkp MB1   &mkp MB2       &none          &mkp MB3
+            &kp LEFT_SHIFT  &none     &none           &none      &none   &none                     &none            &none  &none      &none          &none          &kp RSHIFT
+                                                      &trans     &trans  &trans                    &mkp MB5  &msc SCRL_UP
+                                                                 &trans  &trans                    &mkp MB4  &msc SCRL_DOWN
             >;
         };
 
+        // Charレイヤー: 記号、括弧、セミコロンなどの入力に特化
         Char {
             bindings = <
-&none       &none  &none     &none      &none   &none           &none   &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp GRAVE
-&none       &none  &kp LEFT  &kp RIGHT  &none   &none           &none   &kp SEMICOLON     &kp SQT            &kp MINUS             &kp EQUAL              &none
-&kp LSHIFT  &none  &none     &none      &none   &none           &none   &kp COMMA         &kp PERIOD         &kp SLASH             &kp NON_US_BACKSLASH   &none
-                             &trans     &trans  &trans  &trans  &trans
-                                        &trans  &trans  &trans  &trans
+            &none       &none  &none     &none      &none   &none           &none   &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp GRAVE
+            &none       &none  &kp LEFT  &kp RIGHT  &none   &none           &none   &kp SEMICOLON     &kp SQT            &kp MINUS             &kp EQUAL              &none
+            &kp LSHIFT  &none  &none     &none      &none   &none           &none   &kp COMMA         &kp PERIOD         &kp SLASH             &kp NON_US_BACKSLASH   &none
+                                         &trans     &trans  &trans          &trans  &trans
+                                                    &trans  &trans          &trans  &trans
             >;
         };
 
+        // 数字レイヤー: テンキーのような数字入力専用
         num {
             bindings = <
-&none  &none  &none  &none   &none   &none           &none       &kp N7  &kp N8  &kp N9  &kp SLASH  &kp ASTERISK
-&none  &none  &none  &none   &none   &none           &none       &kp N4  &kp N5  &kp N6  &kp MINUS  &kp PLUS
-&none  &none  &none  &none   &none   &none           &none       &kp N1  &kp N2  &kp N3  &kp EQUAL  &none
-                     &trans  &trans  &trans  &kp N0  &kp PERIOD
-                             &trans  &trans  &none   &none
+            &none  &none  &none  &none   &none   &none           &none       &kp N7  &kp N8  &kp N9  &kp SLASH  &kp ASTERISK
+            &none  &none  &none  &none   &none   &none           &none       &kp N4  &kp N5  &kp N6  &kp MINUS  &kp PLUS
+            &none  &none  &none  &none   &none   &none           &none       &kp N1  &kp N2  &kp N3  &kp EQUAL  &none
+                                 &trans  &trans  &trans          &kp N0  &kp PERIOD
+                                         &trans  &trans          &none   &none
             >;
         };
 
+        // ファンクションレイヤー: F1〜F12キーを提供
         function {
             bindings = <
-&kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6          &kp F7  &kp F8  &kp F9  &kp F10  &kp F11  &kp F12
-&trans  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans   &trans   &trans
-&trans  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans   &trans   &trans
-                        &trans  &trans  &trans  &trans  &trans
-                                &trans  &trans  &trans  &trans
+            &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6          &kp F7  &kp F8  &kp F9  &kp F10  &kp F11  &kp F12
+            &trans  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans   &trans   &trans
+            &trans  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans   &trans   &trans
+                                    &trans  &trans  &trans          &trans  &trans
+                                            &trans  &trans          &trans  &trans
             >;
         };
 
+        // Bluetooth設定レイヤー: 接続先デバイスの切替や選択
         bt {
             bindings = <
-&none  &none  &none  &none  &none  &none         &none  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-&none  &none  &none  &none  &none  &none         &none  &none         &none         &none         &none         &none
-&none  &none  &none  &none  &none  &none         &none  &none         &none         &none         &bt BT_PRV    &bt BT_NXT
-                     &none  &none  &none  &none  &none
-                            &none  &none  &none  &none
+            &none  &none  &none  &none  &none  &none         &none  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
+            &none  &none  &none  &none  &none  &none         &none  &none         &none         &none         &none         &none
+            &none  &none  &none  &none  &none  &none         &none  &none         &none         &none         &bt BT_PRV    &bt BT_NXT
+                                 &none  &none  &none         &none  &none
+                                        &none  &none         &none  &none
             >;
         };
     };
