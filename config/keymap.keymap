@@ -12,7 +12,7 @@
 // - function: ファンクションキー (F1〜F12)
 // - bt: Bluetoothデバイス選択と切替操作
 
-/
+/{
     combos {
         compatible = "zmk,combos";
 
