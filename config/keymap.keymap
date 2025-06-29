@@ -73,11 +73,11 @@
 
         Default {
             bindings = <
-&mt ESC Q     &kp L  &kp U  &kp COMMA  &kp PERIOD     &kp LG(S)                                &kp RG(D)       &kp F  &kp W  &kp R  &kp Y  &kp P
-&mt CAPS E    &kp I  &kp A  &kp O      &kp MINUS      &lt 3 TAB                                &kp RG(V)       &kp K  &kp T  &kp N  &kp S  &kp H
-&mt LSHIFT Z  &kp X  &kp C  &kp V      &kp SEMICOLON  &mo 2                                    &kp RG(C)       &kp G  &kp D  &kp M  &kp J  &mt LSHIFT B
-                            &kp RCTRL  &kp RALT       &multiMkp MB2 MB1  &kp LANGUAGE_2        &kp LANGUAGE_1
-                                       &kp LGUI       &tog 1             &mt DELETE BACKSPACE  &kp SPACE
+&mt ESC Q     &kp L  &kp U  &kp COMMA  &kp PERIOD     &kp LG(S)                  &kp RG(D)       &kp F  &kp W  &kp R  &kp Y  &mt DELETE P
+&mt CAPS E    &kp I  &kp A  &kp O      &kp MINUS      &lt 3 TAB                  &kp RG(V)       &kp K  &kp T  &kp N  &kp S  &kp H
+&mt LSHIFT Z  &kp X  &kp C  &kp V      &kp SEMICOLON  &mo 2                      &kp RG(C)       &kp G  &kp D  &kp M  &kp J  &mt LSHIFT B
+                            &kp RCTRL  &kp RALT       &to 0      &kp LANGUAGE_2  &kp LANGUAGE_1
+                                       &kp LGUI       &to 1      &kp BACKSPACE   &kp SPACE
             >;
         };
 
@@ -85,11 +85,11 @@
 
         Move {
             bindings = <
-&kp ESCAPE      &none     &kp UP_ARROW    &none      &none   &none                     &none            &none  &kp RCTRL  &kp RIGHT_ALT  &kp RIGHT_GUI  &kp LSHIFT
-&none           &kp LEFT  &kp DOWN_ARROW  &kp RIGHT  &none   &msc SCRL_LEFT            &msc SCRL_RIGHT  &none  &mkp MB1   &mkp MB2       &none          &mkp MB3
-&kp LEFT_SHIFT  &none     &none           &none      &none   &none                     &none            &none  &none      &none          &none          &kp RSHIFT
-                                          &trans     &trans  &trans          &mkp MB5  &msc SCRL_UP
-                                                     &trans  &trans          &mkp MB4  &msc SCRL_DOWN
+&kp ESCAPE      &none     &kp UP_ARROW    &none      &none     &none                     &none            &none  &kp RCTRL  &kp RIGHT_ALT  &kp RIGHT_GUI  &kp LSHIFT
+&kp TAB         &kp LEFT  &kp DOWN_ARROW  &kp RIGHT  &none     &msc SCRL_LEFT            &msc SCRL_RIGHT  &none  &mkp MB1   &mkp MB2       &none          &mkp MB3
+&kp LEFT_SHIFT  &none     &none           &none      &none     &none                     &none            &none  &none      &none          &none          &kp RSHIFT
+                                          &kp LCTRL  &kp LALT  &kp LS(SPACE)   &mkp MB5  &msc SCRL_UP
+                                                     &kp LCMD  &kp SPACE       &mkp MB4  &msc SCRL_DOWN
             >;
         };
 
