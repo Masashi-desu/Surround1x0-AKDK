@@ -73,11 +73,11 @@
 
         Default {
             bindings = <
-&mt ESC Q     &kp L  &kp U  &kp COMMA  &kp PERIOD     &kp LG(S)                  &kp RG(D)       &kp F  &kp W  &kp R  &kp Y  &mt DELETE P
-&mt CAPS E    &kp I  &kp A  &kp O      &kp MINUS      &lt 3 TAB                  &kp RG(V)       &kp K  &kp T  &kp N  &kp S  &kp H
-&mt LSHIFT Z  &kp X  &kp C  &kp V      &kp SEMICOLON  &mo 2                      &kp RG(C)       &kp G  &kp D  &kp M  &kp J  &mt LSHIFT B
-                            &kp RCTRL  &kp RALT       &to 0      &kp LANGUAGE_2  &kp LANGUAGE_1
-                                       &kp LGUI       &to 1      &kp BACKSPACE   &kp SPACE
+&mt ESC Q     &kp L  &kp U  &kp COMMA  &kp PERIOD     &kp LG(S)                 &kp RG(D)  &kp F  &kp W  &kp R  &kp Y  &mt DELETE P
+&mt CAPS E    &kp I  &kp A  &kp O      &kp MINUS      &lt 3 TAB                 &kp RG(V)  &kp K  &kp T  &kp N  &kp S  &kp H
+&mt LSHIFT Z  &kp X  &kp C  &kp V      &kp SEMICOLON  &mo 2                     &kp RG(C)  &kp G  &kp D  &kp M  &kp J  &mt LSHIFT B
+                            &kp RCTRL  &kp RALT       &to 0      &kp LANG1      &kp LANG2
+                                       &kp LGUI       &to 1      &kp BACKSPACE  &kp SPACE
             >;
         };
 
@@ -109,11 +109,11 @@
 
         num {
             bindings = <
-&none  &none  &none  &none   &none   &none           &none       &kp N7  &kp N8  &kp N9  &kp SLASH  &kp ASTERISK
-&none  &none  &none  &none   &none   &none           &none       &kp N4  &kp N5  &kp N6  &kp MINUS  &kp PLUS
-&none  &none  &none  &none   &none   &none           &none       &kp N1  &kp N2  &kp N3  &kp EQUAL  &none
-                     &trans  &trans  &trans  &kp N0  &kp PERIOD
-                             &trans  &trans  &none   &none
+&none  &none  &none  &none   &none   &none                  &none       &kp N7  &kp N8  &kp N9  &kp SLASH  &kp ASTERISK
+&none  &none  &none  &none   &none   &none                  &none       &kp N4  &kp N5  &kp N6  &kp MINUS  &kp PLUS
+&none  &none  &none  &none   &none   &none                  &none       &kp N1  &kp N2  &kp N3  &kp EQUAL  &none
+                     &trans  &trans  &trans  &kp N0         &kp PERIOD
+                             &trans  &trans  &kp BACKSPACE  &kp SPACE
             >;
         };
 
