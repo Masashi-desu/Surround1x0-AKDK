@@ -88,8 +88,8 @@
 &kp ESCAPE      &none     &kp UP_ARROW    &none      &none     &none                     &none            &none  &kp RCTRL  &kp RIGHT_ALT  &kp RIGHT_GUI  &kp LSHIFT
 &kp TAB         &kp LEFT  &kp DOWN_ARROW  &kp RIGHT  &none     &msc SCRL_LEFT            &msc SCRL_RIGHT  &none  &mkp MB1   &mkp MB2       &none          &mkp MB3
 &kp LEFT_SHIFT  &none     &none           &none      &none     &none                     &none            &none  &none      &none          &none          &kp RSHIFT
-                                          &kp LCTRL  &kp LALT  &kp LS(SPACE)   &mkp MB5  &msc SCRL_UP
-                                                     &kp LCMD  &kp SPACE       &mkp MB4  &msc SCRL_DOWN
+                                          &kp LCTRL  &kp LALT  &to 0           &mkp MB5  &msc SCRL_UP
+                                                     &kp LCMD  &to 1           &mkp MB4  &msc SCRL_DOWN
             >;
         };
 
