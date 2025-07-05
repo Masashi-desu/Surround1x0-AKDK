@@ -97,11 +97,11 @@
 
         Char {
             bindings = <
-&none       &none     &none  &none      &none   &none           &none   &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp MINUS      &kp EQUAL             &kp GRAVE
-&none       &kp LEFT  &none  &kp RIGHT  &none   &none           &none   &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SEMICOLON  &kp SQT               &none
-&kp LSHIFT  &none     &none  &none      &none   &none           &none   &kp COMMA             &kp PERIOD             &kp SLASH      &kp NON_US_BACKSLASH  &kp RSHIFT
-                             &trans     &trans  &trans  &trans  &trans
-                                        &trans  &trans  &trans  &trans
+&none       &none     &none  &kp EXCLAMATION  &kp QUESTION  &none           &none   &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp MINUS      &kp EQUAL             &kp GRAVE
+&none       &kp LEFT  &none  &kp RIGHT        &none         &none           &none   &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SEMICOLON  &kp SQT               &none
+&kp LSHIFT  &none     &none  &none            &none         &none           &none   &kp COMMA             &kp PERIOD             &kp SLASH      &kp NON_US_BACKSLASH  &kp RSHIFT
+                             &trans           &trans        &trans  &trans  &trans
+                                              &trans        &trans  &trans  &trans
             >;
         };
 
@@ -109,11 +109,11 @@
 
         Num {
             bindings = <
-&none  &none  &none  &none   &none   &none                   &none           &kp ASTERISK  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp MINUS
-&none  &none  &none  &none   &none   &none                   &none           &kp SLASH     &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp PLUS
-&none  &none  &none  &none   &none   &none                   &none           &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PERIOD
-                     &trans  &trans  &trans  &kp LANGUAGE_1  &kp LANGUAGE_2
-                             &trans  &trans  &kp BACKSPACE   &kp SPACE
+&none       &none  &none  &none   &none   &none                   &none           &kp ASTERISK  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp MINUS
+&none       &none  &none  &none   &none   &none                   &none           &kp SLASH     &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp PLUS
+&kp LSHIFT  &none  &none  &none   &none   &none                   &none           &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PERIOD
+                          &trans  &trans  &trans  &kp LANGUAGE_1  &kp LANGUAGE_2
+                                  &trans  &trans  &kp BACKSPACE   &kp SPACE
             >;
         };
 
