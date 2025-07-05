@@ -49,9 +49,9 @@
 
         // すべてのレイヤーを無効化してデフォルトレイヤーに戻す
 
-        resetLayer {
-            bindings = <&to 0>;
-            key-positions = <18 17>;
+        charTog {
+            bindings = <&to 2>;
+            key-positions = <16 19>;
         };
     };
 
@@ -73,11 +73,11 @@
 
         Default {
             bindings = <
-&mt ESC Q     &kp L  &kp U  &kp COMMA  &kp PERIOD     &kp LG(S)                 &kp RG(D)  &kp F  &kp W  &kp R  &kp Y  &mt DELETE P
-&mt CAPS E    &kp I  &kp A  &kp O      &kp MINUS      &lt 3 TAB                 &kp RG(V)  &kp K  &kp T  &kp N  &kp S  &kp H
-&mt LSHIFT Z  &kp X  &kp C  &kp V      &kp SEMICOLON  &mo 2                     &kp RG(C)  &kp G  &kp D  &kp M  &kp J  &mt LSHIFT B
-                            &kp RCTRL  &kp RALT       &to 0      &kp LANG1      &kp LANG2
-                                       &kp LGUI       &to 1      &kp BACKSPACE  &kp SPACE
+&mt ESC Q     &kp L  &kp U  &kp COMMA  &kp PERIOD     &kp LG(S)                 &kp RG(D)  &kp F  &mt RCTRL W  &mt RALT R  &mt RCMD Y  &mt DELETE P
+&mt CAPS E    &kp I  &kp A  &kp O      &kp MINUS      &lt 3 TAB                 &kp RG(V)  &kp K  &kp T        &kp N       &kp S       &kp H
+&mt LSHIFT Z  &kp X  &kp C  &kp V      &kp SEMICOLON  &mo 2                     &kp RG(C)  &kp G  &kp D        &kp M       &kp J       &mt LSHIFT B
+                            &kp RCTRL  &kp RALT       &kp LCMD   &kp LANG1      &kp LANG2
+                                       &to 0          &to 1      &kp BACKSPACE  &kp SPACE
             >;
         };
 
@@ -85,11 +85,11 @@
 
         Move {
             bindings = <
-&kp ESCAPE      &none     &kp UP_ARROW    &none      &none     &none                     &none            &none  &kp RCTRL  &kp RIGHT_ALT  &kp RIGHT_GUI  &kp LSHIFT
-&kp TAB         &kp LEFT  &kp DOWN_ARROW  &kp RIGHT  &none     &msc SCRL_LEFT            &msc SCRL_RIGHT  &none  &mkp MB1   &mkp MB2       &none          &mkp MB3
-&kp LEFT_SHIFT  &none     &none           &none      &none     &none                     &none            &none  &none      &none          &none          &kp RSHIFT
-                                          &kp LCTRL  &kp LALT  &to 0           &mkp MB5  &msc SCRL_UP
-                                                     &kp LCMD  &to 1           &mkp MB4  &msc SCRL_DOWN
+&kp ESCAPE        &none     &kp UP_ARROW    &none      &none     &none                           &none            &none  &kp RCTRL  &kp RIGHT_ALT  &kp RIGHT_GUI  &kp LSHIFT
+&kp TAB           &kp LEFT  &kp DOWN_ARROW  &kp RIGHT  &none     &msc SCRL_LEFT                  &msc SCRL_RIGHT  &none  &mkp MB1   &mkp MB2       &none          &mkp MB3
+&mt LEFT_SHIFT Z  &kp X     &kp C           &kp V      &none     &mkp MB4                        &mkp MB5         &none  &none      &none          &none          &kp RSHIFT
+                                            &kp LCTRL  &kp LALT  &kp LCMD        &msc SCRL_UP    &kp RS(TAB)
+                                                       &to 0     &to 1           &msc SCRL_DOWN  &kp TAB
             >;
         };
 
@@ -97,9 +97,9 @@
 
         Char {
             bindings = <
-&none       &none  &none     &none      &none   &none           &none   &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp GRAVE
-&none       &none  &kp LEFT  &kp RIGHT  &none   &none           &none   &kp SEMICOLON     &kp SQT            &kp MINUS             &kp EQUAL              &none
-&kp LSHIFT  &none  &none     &none      &none   &none           &none   &kp COMMA         &kp PERIOD         &kp SLASH             &kp NON_US_BACKSLASH   &none
+&none       &none     &none  &none      &none   &none           &none   &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp MINUS      &kp EQUAL             &kp GRAVE
+&none       &kp LEFT  &none  &kp RIGHT  &none   &none           &none   &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SEMICOLON  &kp SQT               &none
+&kp LSHIFT  &none     &none  &none      &none   &none           &none   &kp COMMA             &kp PERIOD             &kp SLASH      &kp NON_US_BACKSLASH  &kp RSHIFT
                              &trans     &trans  &trans  &trans  &trans
                                         &trans  &trans  &trans  &trans
             >;
@@ -107,31 +107,31 @@
 
         // 数字レイヤー: テンキーのような数字入力専用
 
-        num {
+        Num {
             bindings = <
-&none  &none  &none  &none   &none   &none                  &none       &kp N7  &kp N8  &kp N9  &kp SLASH  &kp ASTERISK
-&none  &none  &none  &none   &none   &none                  &none       &kp N4  &kp N5  &kp N6  &kp MINUS  &kp PLUS
-&none  &none  &none  &none   &none   &none                  &none       &kp N1  &kp N2  &kp N3  &kp EQUAL  &none
-                     &trans  &trans  &trans  &kp N0         &kp PERIOD
-                             &trans  &trans  &kp BACKSPACE  &kp SPACE
+&none  &none  &none  &none   &none   &none                   &none           &kp ASTERISK  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp MINUS
+&none  &none  &none  &none   &none   &none                   &none           &kp SLASH     &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp PLUS
+&none  &none  &none  &none   &none   &none                   &none           &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PERIOD
+                     &trans  &trans  &trans  &kp LANGUAGE_1  &kp LANGUAGE_2
+                             &trans  &trans  &kp BACKSPACE   &kp SPACE
             >;
         };
 
         // ファンクションレイヤー: F1〜F12キーを提供
 
-        function {
+        Function {
             bindings = <
-&kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6          &kp F7  &kp F8  &kp F9  &kp F10  &kp F11  &kp F12
-&trans  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans   &trans   &trans
-&trans  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans   &trans   &trans
-                        &trans  &trans  &trans  &trans  &trans
-                                &trans  &trans  &trans  &trans
+&kp F1         &kp F2        &kp F3  &kp F4  &kp F5  &kp F6          &kp F7  &kp F8  &kp F9  &kp F10  &kp F11  &kp F12
+&kp C_BRI_DEC  &kp C_BRI_UP  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans   &trans   &trans
+&trans         &trans        &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans   &trans   &trans
+                                     &trans  &trans  &trans  &trans  &trans
+                                             &trans  &trans  &trans  &trans
             >;
         };
 
         // Bluetooth設定レイヤー: 接続先デバイスの切替や選択
 
-        bt {
+        Setting {
             bindings = <
 &none  &none  &none  &none  &none  &none         &none  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
 &none  &none  &none  &none  &none  &none         &none  &none         &none         &none         &none         &none
