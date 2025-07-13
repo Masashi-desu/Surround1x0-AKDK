@@ -43,7 +43,7 @@
         // Bluetooth設定レイヤーに一時移動
 
         btSettings {
-            bindings = <&mo 5>;
+            bindings = <&mo 6>;
             key-positions = <0 12 24>;
         };
 
@@ -52,6 +52,11 @@
         charTog {
             bindings = <&to 2>;
             key-positions = <16 19>;
+        };
+
+        recess {
+            bindings = <&mo 5>;
+            key-positions = <1 13 25>;
         };
     };
 
@@ -74,62 +79,62 @@
         Default {
             bindings = <
 &mt ESC Q     &kp L  &kp U  &kp COMMA  &kp PERIOD     &kp TAB                             &kp SPACE      &kp F  &mt RCTRL W  &mt RALT R  &mt RCMD Y  &mt DELETE P
-&mt CAPS E    &kp I  &kp A  &kp O      &kp MINUS      &mt HOME LEFT_ARROW                 &mt END RIGHT  &kp K  &kp T        &kp N       &kp S       &kp H
+&mt TAB E     &kp I  &kp A  &kp O      &kp MINUS      &mt HOME LEFT_ARROW                 &mt END RIGHT  &kp K  &kp T        &kp N       &kp S       &kp H
 &mt LSHIFT Z  &kp X  &kp C  &kp V      &kp SEMICOLON  &mo 2                               &kp ENTER      &kp G  &kp D        &kp M       &kp J       &mt LSHIFT B
                             &kp RCTRL  &kp RALT       &kp LCMD             &kp LANG1      &kp LANG2
                                        &to 0          &to 1                &kp BACKSPACE  &kp SPACE
             >;
         };
 
-        // Moveレイヤー: カーソルキー・マウス・スクロール操作を割り当て
-
         Move {
             bindings = <
-&kp ESCAPE        &none     &kp UP_ARROW    &none      &none     &kp TAB                         &kp SPACE        &none  &kp RCTRL  &kp RIGHT_ALT  &kp RIGHT_GUI  &kp LSHIFT
-&kp TAB           &kp LEFT  &kp DOWN_ARROW  &kp RIGHT  &none     &msc SCRL_LEFT                  &msc SCRL_RIGHT  &none  &mkp MB1   &mkp MB2       &none          &mkp MB3
-&mt LEFT_SHIFT Z  &kp X     &kp C           &kp V      &none     &mkp MB4                        &mkp MB5         &none  &none      &none          &none          &kp RSHIFT
-                                            &kp LCTRL  &kp LALT  &kp LCMD        &msc SCRL_UP    &kp RS(TAB)
-                                                       &to 0     &to 1           &msc SCRL_DOWN  &kp TAB
+&kp ESCAPE        &kp PAGE_UP  &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME   &kp TAB                         &kp SPACE        &none  &kp RCTRL  &kp RIGHT_ALT  &kp RIGHT_GUI  &kp LSHIFT
+&kp TAB           &kp LEFT     &kp DOWN_ARROW  &kp RIGHT      &kp END    &msc SCRL_LEFT                  &msc SCRL_RIGHT  &none  &mkp MB1   &mkp MB2       &mkp MB3       &none
+&mt LEFT_SHIFT Z  &kp X        &kp C           &kp V          &kp SPACE  &mkp MB4                        &mkp MB5         &none  &none      &none          &none          &kp RSHIFT
+                                               &kp LCTRL      &kp LALT   &kp LCMD        &msc SCRL_UP    &kp RS(TAB)
+                                                              &to 0      &to 1           &msc SCRL_DOWN  &kp TAB
             >;
         };
-
-        // Charレイヤー: 記号、括弧、セミコロンなどの入力に特化
 
         Char {
             bindings = <
-&none       &none     &none  &kp EXCLAMATION  &kp QUESTION  &none           &none   &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp MINUS      &kp EQUAL             &kp GRAVE
-&none       &kp LEFT  &none  &kp RIGHT        &none         &none           &none   &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SEMICOLON  &kp SQT               &none
-&kp LSHIFT  &none     &none  &none            &none         &none           &none   &kp COMMA             &kp PERIOD             &kp SLASH      &kp NON_US_BACKSLASH  &kp RSHIFT
-                             &trans           &trans        &trans  &trans  &trans
-                                              &trans        &trans  &trans  &trans
+&none       &none     &kp UP_ARROW    &kp EXCLAMATION  &kp QUESTION  &none           &none      &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp MINUS      &kp EQUAL  &kp GRAVE
+&none       &kp LEFT  &kp DOWN_ARROW  &kp RIGHT        &none         &none           &none      &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SEMICOLON  &kp SQT    &none
+&kp LSHIFT  &none     &none           &none            &none         &none           &kp ENTER  &kp COMMA             &kp PERIOD             &kp BACKSLASH  &kp SLASH  &mt RSHIFT EXCLAMATION
+                                      &trans           &trans        &trans  &trans  &trans
+                                                       &trans        &trans  &trans  &trans
             >;
         };
-
-        // 数字レイヤー: テンキーのような数字入力専用
 
         Num {
             bindings = <
-&none       &none  &none  &none   &none   &none                   &none           &kp ASTERISK  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp MINUS
-&none       &none  &none  &none   &none   &none                   &none           &kp SLASH     &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp PLUS
-&kp LSHIFT  &none  &none  &none   &none   &none                   &none           &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PERIOD
-                          &trans  &trans  &trans  &kp LANGUAGE_1  &kp LANGUAGE_2
-                                  &trans  &trans  &kp BACKSPACE   &kp SPACE
+&kp ESC     &none           &kp UP_ARROW    &none            &none   &none                   &none           &kp ASTERISK  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp MINUS
+&kp TAB     &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &none   &none                   &none           &kp SLASH     &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp PLUS
+&kp LSHIFT  &kp LCTRL       &kp LALT        &kp LGUI         &none   &none                   &kp ENTER       &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PERIOD
+                                            &trans           &trans  &trans  &kp LANGUAGE_1  &kp LANGUAGE_2
+                                                             &trans  &trans  &kp BACKSPACE   &kp SPACE
             >;
         };
 
-        // ファンクションレイヤー: F1〜F12キーを提供
-
         Function {
             bindings = <
-&kp F1         &kp F2        &kp F3  &kp F4  &kp F5  &kp F6          &kp F7  &kp F8  &kp F9  &kp F10  &kp F11  &kp F12
-&kp C_BRI_DEC  &kp C_BRI_UP  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans   &trans   &trans
-&trans         &trans        &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans   &trans   &trans
+&kp F1         &kp F2        &kp F3  &kp F4  &kp F5  &kp F6          &kp F7  &kp F8  &kp F9  &kp F10     &kp F11       &kp F12
+&kp C_BRI_DEC  &kp C_BRI_UP  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &kp K_MUTE  &kp C_VOL_DN  &kp C_VOLUME_UP
+&trans         &trans        &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans      &trans        &trans
                                      &trans  &trans  &trans  &trans  &trans
                                              &trans  &trans  &trans  &trans
             >;
         };
 
-        // Bluetooth設定レイヤー: 接続先デバイスの切替や選択
+        Recess {
+            bindings = <
+&none  &none  &none  &none  &none  &kp C_POWER                  &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none  &kp C_AL_SCREENSAVER         &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none  &none                        &none  &none  &none  &none  &none  &none
+                     &none  &none  &none                 &none  &none
+                            &none  &none                 &none  &none
+            >;
+        };
 
         Setting {
             bindings = <
