@@ -36,7 +36,7 @@
         // Enterキー入力
 
         ent {
-            bindings = <&kp ENTER>;
+            bindings = <&lt 4 ENTER>;
             key-positions = <42 44>;
         };
 
