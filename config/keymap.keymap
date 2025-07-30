@@ -22,21 +22,21 @@
         // 数字レイヤーをトグル
 
         numTog {
-            bindings = <&tog 4>;
+            bindings = <&tog 3>;
             key-positions = <15 20>;
         };
 
         // ファンクションレイヤーをトグル
 
         fnTog {
-            bindings = <&tog 5>;
+            bindings = <&tog 4>;
             key-positions = <0 11>;
         };
 
         // Enterキー入力
 
         ent {
-            bindings = <&lt 5 ENTER>;
+            bindings = <&lt 4 ENTER>;
             key-positions = <42 44>;
         };
 
@@ -91,7 +91,7 @@
 &mt TAB E     &kp I  &kp A  &kp O      &kp MINUS      &mt HOME LEFT_ARROW                 &mt END RIGHT  &kp K  &kp T        &kp N       &kp S       &kp H
 &mt LSHIFT Z  &kp X  &kp C  &kp V      &kp SEMICOLON  &kp TAB                             &kp ENTER      &kp G  &kp D        &kp M       &kp J       &mt LSHIFT B
                             &kp RCTRL  &kp RALT       &kp LCMD             &kp LANG1      &kp LANG2
-                                       &moto 2 0      &moto 4 1            &kp BACKSPACE  &kp SPACE
+                                       &moto 2 0      &moto 3 1            &kp BACKSPACE  &kp SPACE
             >;
         };
 
@@ -101,7 +101,7 @@
 &kp TAB           &kp LEFT     &kp DOWN_ARROW  &kp RIGHT      &kp END    &mkp MB4                             &mkp MB5     &none  &mkp MB1        &mkp MB2         &mkp MB3       &none
 &mt LEFT_SHIFT Z  &kp X        &kp C           &kp V          &none      &kp TAB                              &kp ENTER    &none  &msc SCRL_LEFT  &msc SCRL_RIGHT  &none          &kp RSHIFT
                                                &kp LCTRL      &kp LALT   &kp LCMD             &msc SCRL_UP    &kp RS(TAB)
-                                                              &moto 2 0  &moto 4 1            &msc SCRL_DOWN  &kp TAB
+                                                              &moto 2 0  &moto 3 1            &msc SCRL_DOWN  &kp TAB
             >;
         };
 
@@ -111,7 +111,7 @@
 &kp TAB     &kp LEFT     &kp DOWN_ARROW  &kp RIGHT      &kp END    &mkp MB4                             &mkp MB5        &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SEMICOLON  &kp SQT    &none
 &kp LSHIFT  &kp LCTRL    &kp LALT        &kp LCMD       &none      &kp TAB                              &kp ENTER       &kp COMMA             &kp PERIOD             &kp BACKSLASH  &kp SLASH  &mt RSHIFT EXCLAMATION
                                          &kp LCTRL      &kp LALT   &kp LCMD             &kp LANGUAGE_1  &kp LANGUAGE_2
-                                                        &moto 2 0  &moto 4 1            &kp BACKSPACE   &kp SPACE
+                                                        &moto 2 0  &moto 3 1            &kp BACKSPACE   &kp SPACE
             >;
         };
 
@@ -121,7 +121,7 @@
 &kp TAB     &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp END    &mkp MB4                             &mkp MB5        &kp SLASH     &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp PLUS
 &kp LSHIFT  &kp LCTRL       &kp LALT        &kp LGUI         &none      &kp TAB                              &kp ENTER       &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PERIOD
                                             &kp LCTRL        &kp LALT   &kp LCMD             &kp LANGUAGE_1  &kp LANGUAGE_2
-                                                             &moto 2 0  &moto 4 1            &kp BACKSPACE   &kp SPACE
+                                                             &moto 2 0  &moto 3 1            &kp BACKSPACE   &kp SPACE
             >;
         };
 
