@@ -22,21 +22,21 @@
         // 数字レイヤーをトグル
 
         numTog {
-            bindings = <&tog 3>;
+            bindings = <&tog 4>;
             key-positions = <15 20>;
         };
 
         // ファンクションレイヤーをトグル
 
         fnTog {
-            bindings = <&tog 4>;
+            bindings = <&tog 5>;
             key-positions = <0 11>;
         };
 
         // Enterキー入力
 
         ent {
-            bindings = <&lt 4 ENTER>;
+            bindings = <&lt 5 ENTER>;
             key-positions = <42 44>;
         };
 
@@ -87,41 +87,41 @@
 
         Default {
             bindings = <
-&mt ESC Q     &kp L  &kp U  &kp COMMA  &kp PERIOD     &mt DELETE CAPSLOCK                 &kp SPACE      &kp F  &mt RCTRL W  &mt RALT R  &mt RCMD Y  &mt RIGHT_SHIFT P
+&mt ESC Q     &kp L  &kp U  &kp COMMA  &kp PERIOD     &mt CAPSLOCK DELETE                 &kp SPACE      &kp F  &mt RCTRL W  &mt RALT R  &mt RCMD Y  &mt RIGHT_SHIFT P
 &mt TAB E     &kp I  &kp A  &kp O      &kp MINUS      &mt HOME LEFT_ARROW                 &mt END RIGHT  &kp K  &kp T        &kp N       &kp S       &kp H
 &mt LSHIFT Z  &kp X  &kp C  &kp V      &kp SEMICOLON  &kp TAB                             &kp ENTER      &kp G  &kp D        &kp M       &kp J       &mt LSHIFT B
                             &kp RCTRL  &kp RALT       &kp LCMD             &kp LANG1      &kp LANG2
-                                       &moto 2 0      &moto 3 1            &kp BACKSPACE  &kp SPACE
+                                       &moto 2 0      &moto 4 1            &kp BACKSPACE  &kp SPACE
             >;
         };
 
         Move {
             bindings = <
-&kp ESCAPE        &kp PAGE_UP  &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME   &mt DELETE BACKSPACE                  &kp SPACE    &none  &kp RCTRL       &kp RIGHT_ALT    &kp RIGHT_GUI  &kp LSHIFT
-&kp TAB           &kp LEFT     &kp DOWN_ARROW  &kp RIGHT      &kp END    &mkp MB4                              &mkp MB5     &none  &mkp MB1        &mkp MB2         &mkp MB3       &none
-&mt LEFT_SHIFT Z  &kp X        &kp C           &kp V          &none      &kp TAB                               &kp ENTER    &none  &msc SCRL_LEFT  &msc SCRL_RIGHT  &none          &kp RSHIFT
-                                               &kp LCTRL      &kp LALT   &kp LCMD              &msc SCRL_UP    &kp RS(TAB)
-                                                              &moto 2 0  &moto 3 1             &msc SCRL_DOWN  &kp TAB
+&kp ESCAPE        &kp PAGE_UP  &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME   &mt CAPSLOCK DELETE                  &kp SPACE    &none  &kp RCTRL       &kp RIGHT_ALT    &kp RIGHT_GUI  &kp LSHIFT
+&kp TAB           &kp LEFT     &kp DOWN_ARROW  &kp RIGHT      &kp END    &mkp MB4                             &mkp MB5     &none  &mkp MB1        &mkp MB2         &mkp MB3       &none
+&mt LEFT_SHIFT Z  &kp X        &kp C           &kp V          &none      &kp TAB                              &kp ENTER    &none  &msc SCRL_LEFT  &msc SCRL_RIGHT  &none          &kp RSHIFT
+                                               &kp LCTRL      &kp LALT   &kp LCMD             &msc SCRL_UP    &kp RS(TAB)
+                                                              &moto 2 0  &moto 4 1            &msc SCRL_DOWN  &kp TAB
             >;
         };
 
         Char {
             bindings = <
-&none       &none     &kp UP_ARROW    &kp EXCLAMATION  &kp QUESTION  &none                      &none           &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp MINUS      &kp EQUAL  &kp GRAVE
-&none       &kp LEFT  &kp DOWN_ARROW  &kp RIGHT        &none         &none                      &none           &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SEMICOLON  &kp SQT    &none
-&kp LSHIFT  &none     &none           &none            &none         &none                      &kp ENTER       &kp COMMA             &kp PERIOD             &kp BACKSLASH  &kp SLASH  &mt RSHIFT EXCLAMATION
-                                      &kp LCTRL        &kp LALT      &kp LCMD   &kp LANGUAGE_1  &kp LANGUAGE_2
-                                                       &moto 2 0     &moto 3 1  &kp BACKSPACE   &kp SPACE
+&kp ESCAPE  &kp PAGE_UP  &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME   &mt CAPSLOCK DELETE                  &kp SPACE       &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp MINUS      &kp EQUAL  &kp GRAVE
+&kp TAB     &kp LEFT     &kp DOWN_ARROW  &kp RIGHT      &kp END    &mkp MB4                             &mkp MB5        &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SEMICOLON  &kp SQT    &none
+&kp LSHIFT  &kp LCTRL    &kp LALT        &kp LCMD       &none      &kp TAB                              &kp ENTER       &kp COMMA             &kp PERIOD             &kp BACKSLASH  &kp SLASH  &mt RSHIFT EXCLAMATION
+                                         &kp LCTRL      &kp LALT   &kp LCMD             &kp LANGUAGE_1  &kp LANGUAGE_2
+                                                        &moto 2 0  &moto 4 1            &kp BACKSPACE   &kp SPACE
             >;
         };
 
         Num {
             bindings = <
-&kp ESC     &none           &kp UP_ARROW    &none            &none      &none                      &none           &kp ASTERISK  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp MINUS
-&kp TAB     &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &none      &none                      &none           &kp SLASH     &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp PLUS
-&kp LSHIFT  &kp LCTRL       &kp LALT        &kp LGUI         &none      &none                      &kp ENTER       &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PERIOD
-                                            &kp LCTRL        &kp LALT   &kp LCMD   &kp LANGUAGE_1  &kp LANGUAGE_2
-                                                             &moto 2 0  &moto 3 1  &kp BACKSPACE   &kp SPACE
+&kp ESC     &kp PAGE_UP     &kp UP_ARROW    &kp PAGE_DOWN    &kp HOME   &mt CAPSLOCK DELETE                  &kp SPACE       &kp ASTERISK  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp MINUS
+&kp TAB     &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp END    &mkp MB4                             &mkp MB5        &kp SLASH     &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp PLUS
+&kp LSHIFT  &kp LCTRL       &kp LALT        &kp LGUI         &none      &kp TAB                              &kp ENTER       &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PERIOD
+                                            &kp LCTRL        &kp LALT   &kp LCMD             &kp LANGUAGE_1  &kp LANGUAGE_2
+                                                             &moto 2 0  &moto 4 1            &kp BACKSPACE   &kp SPACE
             >;
         };
 
