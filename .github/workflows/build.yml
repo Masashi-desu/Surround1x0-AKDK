@@ -4,3 +4,22 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   build:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+
+  dump-config:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: surround1x0_akdk_right-akdk_bt1-zmk
+          path: ./right_firmware
+      - name: Extract .config
+        run: |
+          mkdir -p config_dump
+          find ./right_firmware -name ".config" -exec cp {} config_dump/ \;
+      - name: Upload .config as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: zmk_config
+          path: config_dump/.config
