@@ -20,9 +20,9 @@ jobs:
           west update
           west zephyr-export
 
-      - name: Configure & build (right / central)
+      - name: Configure (cmake only) to produce .config
         run: |
-          west build -s zmk/app -d build-right -b akdk_bt1 -S studio-rpc-usb-uart -- \
+          west build -s zmk/app -d build-right -b akdk_bt1 -S studio-rpc-usb-uart --cmake-only -- \
             -DZMK_CONFIG=$GITHUB_WORKSPACE/config \
             -DSHIELD=surround1x0_akdk_right
 
