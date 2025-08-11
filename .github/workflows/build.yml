@@ -19,22 +19,25 @@ jobs:
           west update
           west zephyr-export
 
-      - name: Configure (cmake only) to produce .config
+      - name: Configure to produce .config
         run: |
-          west build -s zmk/app -d build-right -b akdk_bt1 -S studio-rpc-usb-uart --cmake-only -- \
+          west build -s zmk/app -d build-right -b akdk_bt1 -S studio-rpc-usb-uart -- \
             -DZMK_CONFIG=$GITHUB_WORKSPACE/config \
             -DSHIELD=surround1x0_akdk_right \
             -DZMK_EXTRA_MODULES=$GITHUB_WORKSPACE \
             -DCONFIG_ZMK_STUDIO=y
 
-      - name: Generate Kconfig (.config) only
+      - name: Check .config existence
         run: |
-          west build -d build-right -t zephyr/.config
+          ls -la build-right/zephyr
+          test -f build-right/zephyr/.config
 
       - name: Upload .config artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: config-right
-          path: build-right/zephyr/.config
+          path: |
+            build-right/zephyr/.config
+            build-right/CMakeCache.txt
           if-no-files-found: error
