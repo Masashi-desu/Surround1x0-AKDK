@@ -24,10 +24,11 @@ jobs:
       - name: West init & update
         run: |
           set -xe
-          west init -l "$GITHUB_WORKSPACE" || true
+          west init -m https://github.com/zmkfirmware/zmk
           west update
           west zephyr-export
           ls -la .west || true
+          ls -la zmk || true
 
       - name: Build right (generate .config)
         run: |
