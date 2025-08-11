@@ -31,9 +31,8 @@ jobs:
             mv "$f" "build_out/${base%.zip}_${REVISION}.zip"
           done
 
-      - name: Upload artifacts (keep artifact name stable)
+      - name: Upload renamed artifact (use revision in artifact name)
         uses: actions/upload-artifact@v4
         with:
-          name: firmware
+          name: firmware_${{ env.REVISION }}
           path: build_out/*
-          overwrite: true
