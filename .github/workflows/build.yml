@@ -8,7 +8,7 @@ jobs:
   dump-config:
     needs: build
     runs-on: ubuntu-latest
-    container: ghcr.io/zmkfirmware/zmk-dev:stable
+    container: zmkfirmware/zmk-dev-arm:3.5-branch
     steps:
       - name: Checkout
         uses: actions/checkout@v4
