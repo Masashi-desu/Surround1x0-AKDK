@@ -10,16 +10,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download build artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: surround1x0_akdk_right-akdk_bt1-zmk
           path: ./right_firmware
+
       - name: Extract .config
         run: |
           mkdir -p config_dump
           find ./right_firmware -name ".config" -exec cp {} config_dump/ \;
+
       - name: Upload .config as artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: zmk_config
           path: config_dump/.config
+          if-no-files-found: warn
