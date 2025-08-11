@@ -9,7 +9,7 @@ jobs:
   dump-config:
     name: Dump final .config (right shield)
     runs-on: ubuntu-latest
-    container: ghcr.io/zmkfirmware/zmk-dev-arm:stable
+    container: ghcr.io/zmkfirmware/zmk-dev:stable
     steps:
       - name: Checkout
         uses: actions/checkout@v4
