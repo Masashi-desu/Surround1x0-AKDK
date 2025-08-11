@@ -26,6 +26,10 @@ jobs:
             -DZMK_CONFIG=$GITHUB_WORKSPACE/config \
             -DSHIELD=surround1x0_akdk_right
 
+      - name: Generate Kconfig (.config) only
+        run: |
+          west build -d build-right -t zephyr/.config
+
       - name: Upload .config artifact
         if: always()
         uses: actions/upload-artifact@v4
