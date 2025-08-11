@@ -53,7 +53,7 @@
         
         scroller {
 	        layers = <5>;
-            input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT)>, <&zip_scroll_scaler 1 128>;
+            input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>, <&zip_scroll_scaler 1 128>;
             process-next;
         };
     };
