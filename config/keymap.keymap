@@ -43,7 +43,7 @@
         // Bluetooth設定レイヤーに一時移動
 
         btSettings {
-            bindings = <&mo 6>;
+            bindings = <&mo 7>;
             key-positions = <0 12 24>;
         };
 
@@ -55,7 +55,7 @@
         };
 
         recess {
-            bindings = <&mo 5>;
+            bindings = <&mo 6>;
             key-positions = <1 13 25>;
         };
     };
@@ -99,7 +99,7 @@
             bindings = <
 &kp ESCAPE        &kp PAGE_UP  &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME   &mt CAPSLOCK DELETE                  &kp SPACE    &none  &kp RCTRL       &kp RIGHT_ALT    &kp RIGHT_GUI  &kp LSHIFT
 &kp TAB           &kp LEFT     &kp DOWN_ARROW  &kp RIGHT      &kp END    &mkp MB4                             &mkp MB5     &none  &mkp MB1        &mkp MB2         &mkp MB3       &none
-&mt LEFT_SHIFT Z  &kp X        &kp C           &kp V          &none      &kp TAB                              &kp ENTER    &none  &msc SCRL_LEFT  &msc SCRL_RIGHT  &none          &kp RSHIFT
+&mt LEFT_SHIFT Z  &kp X        &kp C           &kp V          &none      &kp TAB                              &kp ENTER    &none  &msc SCRL_LEFT  &msc SCRL_RIGHT  &mo 5          &kp RSHIFT
                                                &kp LCTRL      &kp LALT   &kp LCMD             &msc SCRL_UP    &kp RS(TAB)
                                                               &moto 2 0  &moto 3 1            &msc SCRL_DOWN  &kp TAB
             >;
@@ -132,6 +132,16 @@
 &trans                &trans                &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans      &trans             &trans
                                                     &trans  &trans  &trans  &trans  &trans
                                                             &trans  &trans  &trans  &trans
+            >;
+        };
+
+        scroll {
+            bindings = <
+&kp ESCAPE        &kp PAGE_UP  &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME   &mt CAPSLOCK DELETE                  &kp SPACE    &none  &kp RCTRL       &kp RIGHT_ALT    &kp RIGHT_GUI  &kp LSHIFT
+&kp TAB           &kp LEFT     &kp DOWN_ARROW  &kp RIGHT      &kp END    &mkp MB4                             &mkp MB5     &none  &mkp MB1        &mkp MB2         &mkp MB3       &none
+&mt LEFT_SHIFT Z  &kp X        &kp C           &kp V          &none      &kp TAB                              &kp ENTER    &none  &msc SCRL_LEFT  &msc SCRL_RIGHT  &none          &kp RSHIFT
+                                               &kp LCTRL      &kp LALT   &kp LCMD             &msc SCRL_UP    &kp RS(TAB)
+                                                              &moto 2 0  &moto 3 1            &msc SCRL_DOWN  &kp TAB
             >;
         };
 
