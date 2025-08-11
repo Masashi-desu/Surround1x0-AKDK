@@ -24,7 +24,9 @@ jobs:
         run: |
           west build -s zmk/app -d build-right -b akdk_bt1 -S studio-rpc-usb-uart --cmake-only -- \
             -DZMK_CONFIG=$GITHUB_WORKSPACE/config \
-            -DSHIELD=surround1x0_akdk_right
+            -DSHIELD=surround1x0_akdk_right \
+            -DZMK_EXTRA_MODULES=$GITHUB_WORKSPACE \
+            -DCONFIG_ZMK_STUDIO=y
 
       - name: Generate Kconfig (.config) only
         run: |
