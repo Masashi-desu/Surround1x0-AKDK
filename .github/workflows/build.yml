@@ -24,15 +24,24 @@ jobs:
       - name: West init & update
         run: |
           set -xe
-          west init -m https://github.com/zmkfirmware/zmk
+          # カレントディレクトリ(=$GITHUB_WORKSPACE)を west ワークスペースにする
+          west init -m https://github.com/zmkfirmware/zmk .
+          # Git の ownership 警告を抑止（manifest/zmk も含めて許可）
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git config --global --add safe.directory "$GITHUB_WORKSPACE/zmk"
+          git config --global --add safe.directory "$GITHUB_WORKSPACE/zephyr"
           west update
           west zephyr-export
+          # デバッグ用
+          west list || true
           ls -la .west || true
           ls -la zmk || true
+          ls -la zephyr || true
 
       - name: Build right (generate .config)
         run: |
           set -xe
+          ls -la
           west build -s zmk/app -d build-right -b akdk_bt1 -S studio-rpc-usb-uart -- \
             -DZMK_CONFIG=$GITHUB_WORKSPACE/config \
             -DSHIELD=surround1x0_akdk_right \
