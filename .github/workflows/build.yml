@@ -29,10 +29,11 @@ jobs:
           for f in build_out/*.zip; do
             base=$(basename "$f")
             mv "$f" "build_out/${base%.zip}_${REVISION}.zip"
+            echo "Renamed $f to build_out/${base%.zip}_${REVISION}.zip"
           done
 
       - name: Upload renamed artifact (use revision in artifact name)
         uses: actions/upload-artifact@v4
         with:
           name: firmware_${{ env.REVISION }}
-          path: build_out/firmware_${{ env.REVISION }}.zip
+          path: build_out/*_${{ env.REVISION }}.zip
