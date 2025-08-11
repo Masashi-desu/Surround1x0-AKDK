@@ -6,34 +6,3 @@ jobs:
   build:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
 
-  rename-and-upload:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout (to read commit hash)
-        uses: actions/checkout@v4
-
-      - name: Get short commit hash
-        run: echo "REVISION=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
-
-      - name: Download firmware artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: firmware
-          path: build_out
-
-      - name: Rename only top-level zip with revision
-        shell: bash
-        run: |
-          shopt -s nullglob
-          for f in build_out/*.zip; do
-            base=$(basename "$f")
-            mv "$f" "build_out/${base%.zip}_${REVISION}.zip"
-            echo "Renamed $f to build_out/${base%.zip}_${REVISION}.zip"
-          done
-
-      - name: Upload renamed artifact (use revision in artifact name)
-        uses: actions/upload-artifact@v4
-        with:
-          name: firmware_${{ env.REVISION }}
-          path: build_out/*_${{ env.REVISION }}.zip
