@@ -8,21 +8,31 @@ jobs:
   dump-config:
     needs: build
     runs-on: ubuntu-latest
+    container: ghcr.io/zmkfirmware/zmk-dev:stable
     steps:
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: surround1x0_akdk_right-akdk_bt1-zmk
-          path: ./right_firmware
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Extract .config
+      - name: West init & update
         run: |
-          mkdir -p config_dump
-          find ./right_firmware -name ".config" -exec cp {} config_dump/ \;
+          west init -l .
+          west update
+          west zephyr-export
 
-      - name: Upload .config as artifact
+      - name: Build right (generate .config)
+        run: |
+          west build -s zmk/app -d build-right -b akdk_bt1 -S studio-rpc-usb-uart -- \
+            -DZMK_CONFIG=$GITHUB_WORKSPACE/config \
+            -DSHIELD=surround1x0_akdk_right \
+            -DZMK_EXTRA_MODULES=$GITHUB_WORKSPACE \
+            -DCONFIG_ZMK_STUDIO=y
+
+      - name: Upload .config and CMakeCache
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: zmk_config
-          path: config_dump/.config
-          if-no-files-found: warn
+          name: config-right
+          path: |
+            build-right/zephyr/.config
+            build-right/CMakeCache.txt
+          if-no-files-found: error
