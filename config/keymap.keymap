@@ -84,7 +84,7 @@
             bindings = <
 &mt ESC Q     &kp L        &kp U       &kp COMMA   &kp PERIOD     &mt CAPSLOCK DELETE                 &kp SPACE      &kp F  &kp W        &kp R       &kp Y       &kp P
 &kp E         &kp I        &kp A       &kp O       &kp MINUS      &mt HOME LEFT_ARROW                 &mt END RIGHT  &kp K  &kp T        &kp N       &kp S       &kp H
-&mt LSHIFT Z  &mt LCTRL X  &mt LALT C  &mt LGUI V  &kp SEMICOLON  &kp TAB                             &kp ENTER      &kp G  &mt RCTRL D  &mt RALT M  &mt J RGUI  &mt LSHIFT B
+&mt LSHIFT Z  &mt LCTRL X  &mt LALT C  &mt LGUI V  &kp SEMICOLON  &kp TAB                             &kp ENTER      &kp G  &mt RCTRL D  &mt RALT M  &mt RGUI J  &mt LSHIFT B
                                        &kp RCTRL   &kp RALT       &kp LCMD             &kp LANG1      &kp LANG2
                                                    &moto 2 0      &moto 3 1            &kp BACKSPACE  &kp SPACE
             >;
