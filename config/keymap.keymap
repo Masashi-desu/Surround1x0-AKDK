@@ -53,6 +53,11 @@
             bindings = <&mo 6>;
             key-positions = <1 13 25>;
         };
+
+        moFn {
+            bindings = <&mo 4>;
+            key-positions = <42 44>;
+        };
     };
 
     behaviors {
