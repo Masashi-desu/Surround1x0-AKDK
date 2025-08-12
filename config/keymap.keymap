@@ -1,6 +1,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
 
 // ZMK用のキーマップ設定ファイル
@@ -34,12 +35,6 @@
         };
 
         // Enterキー入力
-
-        ent {
-            bindings = <&lt 4 ENTER>;
-            key-positions = <42 44>;
-        };
-
         // Bluetooth設定レイヤーに一時移動
 
         btSettings {
@@ -87,19 +82,19 @@
 
         Default {
             bindings = <
-&mt ESC Q     &kp L  &kp U  &kp COMMA  &kp PERIOD     &mt CAPSLOCK DELETE                 &kp SPACE      &kp F  &mt RCTRL W  &mt RALT R  &mt RCMD Y  &mt RIGHT_SHIFT P
-&mt TAB E     &kp I  &kp A  &kp O      &kp MINUS      &mt HOME LEFT_ARROW                 &mt END RIGHT  &kp K  &kp T        &kp N       &kp S       &kp H
-&mt LSHIFT Z  &kp X  &kp C  &kp V      &kp SEMICOLON  &kp TAB                             &kp ENTER      &kp G  &kp D        &kp M       &kp J       &mt LSHIFT B
-                            &kp RCTRL  &kp RALT       &kp LCMD             &kp LANG1      &kp LANG2
-                                       &moto 2 0      &moto 3 1            &kp BACKSPACE  &kp SPACE
+&mt ESC Q     &kp L        &kp U       &kp COMMA   &kp PERIOD     &mt CAPSLOCK DELETE                 &kp SPACE      &kp F  &kp W        &kp R       &kp Y       &kp P
+&kp E         &kp I        &kp A       &kp O       &kp MINUS      &mt HOME LEFT_ARROW                 &mt END RIGHT  &kp K  &kp T        &kp N       &kp S       &kp H
+&mt LSHIFT Z  &mt LCTRL X  &mt LALT C  &mt LGUI V  &kp SEMICOLON  &kp TAB                             &kp ENTER      &kp G  &mt RCTRL D  &mt RALT M  &mt J RGUI  &mt LSHIFT B
+                                       &kp RCTRL   &kp RALT       &kp LCMD             &kp LANG1      &kp LANG2
+                                                   &moto 2 0      &moto 3 1            &kp BACKSPACE  &kp SPACE
             >;
         };
 
         Move {
             bindings = <
-&kp ESCAPE        &kp PAGE_UP  &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME   &mt CAPSLOCK DELETE                  &kp SPACE    &none  &kp RCTRL       &kp RIGHT_ALT    &kp RIGHT_GUI  &kp LSHIFT
-&kp TAB           &kp LEFT     &kp DOWN_ARROW  &kp RIGHT      &kp END    &mkp MB4                             &mkp MB5     &none  &mkp MB1        &mkp MB2         &mkp MB3       &none
-&mt LEFT_SHIFT Z  &kp X        &kp C           &kp V          &none      &kp TAB                              &kp ENTER    &none  &msc SCRL_LEFT  &msc SCRL_RIGHT  &mo 5          &kp RSHIFT
+&kp ESCAPE        &kp PAGE_UP  &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME   &mt CAPSLOCK DELETE                  &kp SPACE    &none  &msc SCRL_LEFT  &msc SCRL_RIGHT  &none     &none
+&none             &kp LEFT     &kp DOWN_ARROW  &kp RIGHT      &kp END    &mkp MB4                             &mkp MB5     &none  &mkp MB1        &mkp MB2         &mkp MB3  &mo 5
+&mt LEFT_SHIFT Z  &mt LCTRL X  &mt LALT C      &mt LGUI V     &none      &kp TAB                              &kp ENTER    &none  &kp RCTRL       &kp RALT         &kp RGUI  &kp RSHIFT
                                                &kp LCTRL      &kp LALT   &kp LCMD             &msc SCRL_UP    &kp RS(TAB)
                                                               &moto 2 0  &moto 3 1            &msc SCRL_DOWN  &kp TAB
             >;
@@ -108,7 +103,7 @@
         Char {
             bindings = <
 &kp ESCAPE  &kp PAGE_UP  &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME   &mt CAPSLOCK DELETE                  &kp SPACE       &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp MINUS      &kp EQUAL  &kp ASTERISK
-&kp TAB     &kp LEFT     &kp DOWN_ARROW  &kp RIGHT      &kp END    &mkp MB4                             &mkp MB5        &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SEMICOLON  &kp SQT    &kp GRAVE
+&none       &kp LEFT     &kp DOWN_ARROW  &kp RIGHT      &kp END    &mkp MB4                             &mkp MB5        &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SEMICOLON  &kp SQT    &kp GRAVE
 &kp LSHIFT  &kp LCTRL    &kp LALT        &kp LCMD       &none      &kp TAB                              &kp ENTER       &kp COMMA             &kp PERIOD             &kp BACKSLASH  &kp SLASH  &mt RSHIFT EXCLAMATION
                                          &kp LCTRL      &kp LALT   &kp LCMD             &kp LANGUAGE_1  &kp LANGUAGE_2
                                                         &moto 2 0  &moto 3 1            &kp BACKSPACE   &kp SPACE
@@ -118,7 +113,7 @@
         Num {
             bindings = <
 &kp ESC     &kp PAGE_UP     &kp UP_ARROW    &kp PAGE_DOWN    &kp HOME   &mt CAPSLOCK DELETE                  &kp SPACE       &kp SLASH     &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp MINUS
-&kp TAB     &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp END    &mkp MB4                             &mkp MB5        &kp ASTERISK  &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp PLUS
+&none       &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp END    &mkp MB4                             &mkp MB5        &kp ASTERISK  &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp PLUS
 &kp LSHIFT  &kp LCTRL       &kp LALT        &kp LGUI         &none      &kp TAB                              &kp ENTER       &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PERIOD
                                             &kp LCTRL        &kp LALT   &kp LCMD             &kp LANGUAGE_1  &kp LANGUAGE_2
                                                              &moto 2 0  &moto 3 1            &kp BACKSPACE   &kp SPACE
@@ -135,11 +130,11 @@
             >;
         };
 
-        scroll {
+        Scroll {
             bindings = <
-&kp ESCAPE        &kp PAGE_UP  &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME   &mt CAPSLOCK DELETE                  &kp SPACE    &none  &kp RCTRL       &kp RIGHT_ALT    &kp RIGHT_GUI  &kp LSHIFT
-&kp TAB           &kp LEFT     &kp DOWN_ARROW  &kp RIGHT      &kp END    &mkp MB4                             &mkp MB5     &none  &mkp MB1        &mkp MB2         &mkp MB3       &none
-&mt LEFT_SHIFT Z  &kp X        &kp C           &kp V          &none      &kp TAB                              &kp ENTER    &none  &msc SCRL_LEFT  &msc SCRL_RIGHT  &none          &kp RSHIFT
+&kp ESCAPE        &kp PAGE_UP  &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME   &mt CAPSLOCK DELETE                  &kp SPACE    &none  &msc SCRL_LEFT  &msc SCRL_RIGHT  &none     &none
+&none             &kp LEFT     &kp DOWN_ARROW  &kp RIGHT      &kp END    &mkp MB4                             &mkp MB5     &none  &mkp MB1        &mkp MB2         &mkp MB3  &none
+&mt LEFT_SHIFT Z  &mt LCTRL X  &mt LALT C      &mt LGUI V     &none      &kp TAB                              &kp ENTER    &none  &kp RCTRL       &kp RALT         &kp RGUI  &kp RSHIFT
                                                &kp LCTRL      &kp LALT   &kp LCMD             &msc SCRL_UP    &kp RS(TAB)
                                                               &moto 2 0  &moto 3 1            &msc SCRL_DOWN  &kp TAB
             >;
@@ -157,9 +152,9 @@
 
         Setting {
             bindings = <
-&none  &none  &none  &none  &none  &bt BT_CLR             &none  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-&none  &none  &none  &none  &none  &studio_unlock         &none  &none         &none         &none         &none         &none
-&none  &none  &none  &none  &none  &none                  &none  &none         &none         &none         &bt BT_PRV    &bt BT_NXT
+&none  &none  &none  &none  &none  &bt BT_CLR             &out OUT_TOG  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
+&none  &none  &none  &none  &none  &studio_unlock         &none         &none         &none         &none         &none         &none
+&none  &none  &none  &none  &none  &none                  &none         &none         &none         &none         &bt BT_PRV    &bt BT_NXT
                      &none  &none  &none           &none  &none
                             &none  &none           &none  &none
             >;
