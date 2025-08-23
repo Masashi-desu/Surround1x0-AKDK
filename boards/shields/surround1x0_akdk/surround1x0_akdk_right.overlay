@@ -51,10 +51,19 @@
         device = <&trackball>;
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
         
-        scroller {
+        /* Mac用: ナチュラルスクロールON時 */
+        scroller_mac {
             layers = <5>;
-            input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_transform (INPUT_TRANSFORM_Y_INVERT)>, <&zip_scroll_scaler 1 128>;
+            input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>, <&zip_scroll_scaler 1 128>;
             process-next;
+
+        /* Win用: TODO */
+        /* scroller_win {
+            layers = <ここにレイヤを指定>; /* TODO Win用スクロールレイヤを設定 */
+            input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_transform (INPUT_TRANSFORM_Y_INVERT)>, <&zip_scroll_scaler 1 128>;
+            process-nextt;
+        }; */
+
         };
     };
 };
