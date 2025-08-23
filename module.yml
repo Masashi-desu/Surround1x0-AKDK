@@ -1,5 +1,5 @@
 name: zmk_input_mode
 build:
   cmake: .
-  boards: boards
-  dts: dts
+  board_root: boards
+  dts_root: dts
