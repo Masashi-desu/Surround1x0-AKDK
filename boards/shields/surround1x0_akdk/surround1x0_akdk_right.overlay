@@ -48,8 +48,8 @@
     trackball_listener: trackball_listener {
         compatible = "zmk,input-listener";
         device = <&trackball>;
-        /* Pointer系: ハードの向き補正として X を反転（スクロールとは別パイプライン） */
-        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT)>;
+        /* Pointer系: ハードの向き補正として X と Y を反転（スクロールとは別パイプライン） */
+        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
         
         /* Scroll系 (Mac): Xのみ反転。ナチュラルスクロールON時に従来の体感へ */
         /* Mac用: ナチュラルスクロールON時 */
