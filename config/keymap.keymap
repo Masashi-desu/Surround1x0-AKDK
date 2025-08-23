@@ -80,11 +80,11 @@
 
         Move {
             bindings = <
-&kp ESCAPE        &kp PAGE_UP  &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME   &mt CAPSLOCK DELETE                  &kp SPACE    &none  &msc SCRL_LEFT  &msc SCRL_RIGHT  &none     &none
+&kp ESCAPE        &kp PAGE_UP  &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME   &mt CAPSLOCK DELETE                  &kp SPACE    &none  &msc SCRL_RIGHT  &msc SCRL_LEFT  &none     &none
 &mo 5             &kp LEFT     &kp DOWN_ARROW  &kp RIGHT      &kp END    &mkp MB4                             &mkp MB5     &none  &mkp MB1        &mkp MB2         &mkp MB3  &mo 5
 &mt LEFT_SHIFT Z  &mt LCTRL X  &mt LALT C      &mt LGUI V     &none      &kp TAB                              &kp ENTER    &none  &kp RCTRL       &kp RALT         &kp RGUI  &kp RSHIFT
-                                               &kp LCTRL      &kp LALT   &kp LCMD             &msc SCRL_UP    &kp RS(TAB)
-                                                              &moto 2 0  &moto 3 1            &msc SCRL_DOWN  &kp TAB
+                                               &kp LCTRL      &kp LALT   &kp LCMD             &msc SCRL_DOWN    &kp RS(TAB)
+                                                              &moto 2 0  &moto 3 1            &msc SCRL_UP  &kp TAB
             >;
         };
 
@@ -120,11 +120,11 @@
 
         Scroll {
             bindings = <
-&kp ESCAPE        &kp PAGE_UP  &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME   &mt CAPSLOCK DELETE                  &kp SPACE    &none  &msc SCRL_LEFT  &msc SCRL_RIGHT  &none     &none
+&kp ESCAPE        &kp PAGE_UP  &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME   &mt CAPSLOCK DELETE                  &kp SPACE    &none  &msc SCRL_RIGHT  &msc SCRL_LEFT  &none     &none
 &none             &kp LEFT     &kp DOWN_ARROW  &kp RIGHT      &kp END    &mkp MB4                             &mkp MB5     &none  &mkp MB1        &mkp MB2         &mkp MB3  &none
 &mt LEFT_SHIFT Z  &mt LCTRL X  &mt LALT C      &mt LGUI V     &none      &kp TAB                              &kp ENTER    &none  &kp RCTRL       &kp RALT         &kp RGUI  &kp RSHIFT
-                                               &kp LCTRL      &kp LALT   &kp LCMD             &msc SCRL_UP    &kp RS(TAB)
-                                                              &moto 2 0  &moto 3 1            &msc SCRL_DOWN  &kp TAB
+                                               &kp LCTRL      &kp LALT   &kp LCMD             &msc SCRL_DOWN    &kp RS(TAB)
+                                                              &moto 2 0  &moto 3 1            &msc SCRL_UP  &kp TAB
             >;
         };
 
