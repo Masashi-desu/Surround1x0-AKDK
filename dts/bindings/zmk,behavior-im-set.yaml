@@ -1,0 +1,14 @@
+# SPDX-License-Identifier: MIT
+# Simple binding for &im_set <state>
+
+compatible: "zmk,behavior-im-set"
+
+include: ["behavior.yaml"]
+
+properties:
+  label:
+    required: true
+  "#binding-cells":
+    const: 1
+    description: |
+      Single argument specifying the new input mode state.

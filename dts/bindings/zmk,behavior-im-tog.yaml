@@ -1,0 +1,16 @@
+# SPDX-License-Identifier: MIT
+# Binding for &im_tog <L0 L1 ...>
+
+compatible: "zmk,behavior-im-tog"
+
+include: ["behavior.yaml"]
+
+properties:
+  label:
+    required: true
+  "#binding-cells":
+    const: 8
+    description: |
+      Up to eight layer indices. Only the first IM_NUM_STATES entries are used
+      at run time. Provide exactly IM_NUM_STATES arguments in the keymap and
+      repeat the last value for the remaining slots if fewer than eight.

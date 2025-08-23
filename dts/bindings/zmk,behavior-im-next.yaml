@@ -1,0 +1,14 @@
+# SPDX-License-Identifier: MIT
+# Binding for &im_next
+
+compatible: "zmk,behavior-im-next"
+
+include: ["behavior.yaml"]
+
+properties:
+  label:
+    required: true
+  "#binding-cells":
+    const: 0
+    description: |
+      No arguments. Advances to the next input mode.
