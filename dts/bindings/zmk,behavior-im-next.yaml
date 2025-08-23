@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: MIT
+# Input Mode: advance to next state
+
+description: |-
+  Advance to the next input mode. Wraps back to 0 after the last mode.
+
+compatible: "zmk,behavior-im-next"
+
+include: behavior.yaml
+
+# No arguments required
+#binding-cells: 0
+

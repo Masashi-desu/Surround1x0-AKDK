@@ -5,19 +5,20 @@ config BOARD_ENABLE_DCDC
     depends on BOARD_AKDK_BT1
 
 
-menu "Input Mode (two states: 0=macOS, 1=Windows)"
+menu "Input Mode"
 
 config IM_NUM_STATES
     int "Number of input modes"
     default 2
-    range 2 2
+    range 2 8
     help
-      最小導入では 2 状態に固定します（0=macOS, 1=Windows）。
+      入力モードの総数を設定します。0 から N-1 までの値を状態として扱い、
+      デフォルトでは 2 状態 (0=macOS, 1=Windows) ですが最大 8 まで増やせます。
 
 config IM_DEFAULT_STATE
-    int "Default input mode at boot (0=macOS)"
+    int "Default input mode at boot"
     default 0
-    range 0 1
+    range 0 (IM_NUM_STATES - 1)
 
 config IM_SETTINGS
     bool "Persist input mode via Zephyr settings"

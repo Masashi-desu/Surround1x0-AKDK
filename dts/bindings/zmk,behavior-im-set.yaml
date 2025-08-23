@@ -1,0 +1,14 @@
+# SPDX-License-Identifier: MIT
+# Input Mode: set to a specific state
+
+description: |-
+  Set the current input mode to the provided state index.
+
+compatible: "zmk,behavior-im-set"
+
+include: behavior.yaml
+
+# One argument: target state to set.
+#binding-cells:
+  - state
+

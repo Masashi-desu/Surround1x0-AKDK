@@ -1,0 +1,22 @@
+# SPDX-License-Identifier: MIT
+# Input Mode: momentarily activate layer based on current state
+
+description: |-
+  Momentarily activate one layer from the list depending on the current
+  input mode. Provide IM_NUM_STATES layer numbers.
+
+compatible: "zmk,behavior-im-mo"
+
+include: behavior.yaml
+
+# Up to eight parameters; only the first IM_NUM_STATES entries are used.
+#binding-cells:
+  - l0
+  - l1
+  - l2
+  - l3
+  - l4
+  - l5
+  - l6
+  - l7
+
