@@ -1,0 +1,4 @@
+# Kconfig file for the zmk_input_mode module.
+# Currently empty; required to satisfy Zephyr module schema and avoid
+# recursive inclusion of Kconfig.zephyr.
+
