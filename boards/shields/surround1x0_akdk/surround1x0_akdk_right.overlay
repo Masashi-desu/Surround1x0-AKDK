@@ -59,9 +59,9 @@
 
         /* Win用: TODO */
         /* scroller_win {
-            layers = <ここにレイヤを指定>; /* TODO Win用スクロールレイヤを設定 */
+            layers = <6>; // Win用スクロールレイヤを設定（必要に応じて変更）
             input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_transform (INPUT_TRANSFORM_Y_INVERT)>, <&zip_scroll_scaler 1 128>;
-            process-nextt;
+            process-next;
         }; */
 
         };
