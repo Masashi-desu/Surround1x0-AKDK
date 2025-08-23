@@ -1,5 +1,5 @@
 name: zmk_input_mode
 build:
   cmake: ..
-  settings:
-    board_root: .
+settings:
+  board_root: .
