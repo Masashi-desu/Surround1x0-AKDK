@@ -10,6 +10,7 @@ if(CONFIG_LAYOUT_SHIFT)
     target_sources_ifdef(CONFIG_LAYOUT_SHIFT app PRIVATE
       ${CMAKE_CURRENT_LIST_DIR}/src/behavior_layout_shift_key_press.c
       ${CMAKE_CURRENT_LIST_DIR}/src/behavior_layout_shift_toggle.c
+      ${CMAKE_CURRENT_LIST_DIR}/src/behavior_momentary_layer_shift.c
     )
   endif()
 endif()

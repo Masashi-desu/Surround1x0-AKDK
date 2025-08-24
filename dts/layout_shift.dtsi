@@ -28,6 +28,14 @@
             display-name = "Mod-Tap with Layout Shift";
         };
 
+        // Layout-aware momentary layer behavior alias
+        mols: layout_shift_momentary_layer {
+            compatible = "zmk,behavior-momentary-layer-shift";
+            #binding-cells = <1>;
+            label = "LAYOUT_SHIFT_MO";
+            display-name = "Momentary Layer with Layout Shift";
+        };
+
         // Layout shift toggle behaviors
         tog_ls: toggle_layout_shift {
             compatible = "zmk,behavior-layout-shift-toggle";
