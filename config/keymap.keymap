@@ -71,9 +71,9 @@
 
         Default {
             bindings = <
-&mtls ESC Q     &kp L        &kp U       &kp COMMA   &kp PERIOD     &mtls CAPSLOCK DELETE                 &kp SPACE      &kp F  &kp W        &kp R       &kp Y       &kp P
-&kp E         &kp I        &kp A       &kp O       &kp MINUS      &mtls HOME LEFT_ARROW                 &mtls END RIGHT  &kp K  &kp T        &kp N       &kp S       &kp H
-&mtls LSHIFT Z  &mtls LCTRL X  &mtls LALT C  &mtls LCMD V  &kp SEMICOLON  &kp TAB                             &kp ENTER      &kp G  &mtls RCTRL D  &mtls RALT M  &mtls RCMD J  &mtls LSHIFT B
+&mt ESC Q     &kp L        &kp U       &kp COMMA   &kp PERIOD     &mt CAPSLOCK DELETE                 &kp SPACE      &kp F  &kp W        &kp R       &kp Y       &kp P
+&kp E         &kp I        &kp A       &kp O       &kp MINUS      &mt HOME LEFT_ARROW                 &mt END RIGHT  &kp K  &kp T        &kp N       &kp S       &kp H
+&mt LSHIFT Z  &mtls LCTRL X  &mtls LALT C  &mtls LCMD V  &kp SEMICOLON  &kp TAB                             &kp ENTER      &kp G  &mtls RCTRL D  &mtls RALT M  &mtls RCMD J  &mt LSHIFT B
                                        &kpls RCTRL   &kpls RALT       &kpls LCMD             &kp LANG1      &kp LANG2
                                                    &moto 2 0      &moto 3 1            &kp BACKSPACE  &kp SPACE
             >;
@@ -81,9 +81,9 @@
 
         Move {
             bindings = <
-&kp ESCAPE        &kp PAGE_UP  &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME   &mtls CAPSLOCK DELETE                  &kp SPACE    &none  &msc SCRL_RIGHT  &msc SCRL_LEFT  &none     &none
+&kp ESCAPE        &kp PAGE_UP  &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME   &mt CAPSLOCK DELETE                  &kp SPACE    &none  &msc SCRL_RIGHT  &msc SCRL_LEFT  &none     &none
 &mo 5             &kp LEFT     &kp DOWN_ARROW  &kp RIGHT      &kp END    &mkp MB4                             &mkp MB5     &none  &mkp MB1        &mkp MB2         &mkp MB3  &mo 5
-&mtls LEFT_SHIFT Z  &mtls LCTRL X  &mtls LALT C      &mtls LCMD V     &none      &kp TAB                              &kp ENTER    &none  &kpls RCTRL       &kpls RALT         &kpls RCMD  &kp RSHIFT
+&mt LEFT_SHIFT Z  &mtls LCTRL X  &mtls LALT C      &mtls LCMD V     &none      &kp TAB                              &kp ENTER    &none  &kpls RCTRL       &kpls RALT         &kpls RCMD  &kp RSHIFT
                                                &kpls LCTRL      &kpls LALT   &kpls LCMD             &msc SCRL_DOWN    &kp RS(TAB)
                                                               &moto 2 0  &moto 3 1            &msc SCRL_UP  &kp TAB
             >;
@@ -91,9 +91,9 @@
 
         Char {
             bindings = <
-&kp ESCAPE  &kp PAGE_UP  &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME   &mtls CAPSLOCK DELETE                  &kp SPACE       &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp MINUS      &kp EQUAL  &kp ASTERISK
+&kp ESCAPE  &kp PAGE_UP  &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME   &mt CAPSLOCK DELETE                  &kp SPACE       &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp MINUS      &kp EQUAL  &kp ASTERISK
 &mo 5       &kp LEFT     &kp DOWN_ARROW  &kp RIGHT      &kp END    &mkp MB4                             &mkp MB5        &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SEMICOLON  &kp SQT    &kp GRAVE
-&kp LSHIFT  &kpls LCTRL    &kpls LALT        &kpls LCMD       &none      &kp TAB                              &kp ENTER       &kp COMMA             &kp PERIOD             &kp BACKSLASH  &kp SLASH  &mtls RSHIFT EXCLAMATION
+&kp LSHIFT  &kpls LCTRL    &kpls LALT        &kpls LCMD       &none      &kp TAB                              &kp ENTER       &kp COMMA             &kp PERIOD             &kp BACKSLASH  &kp SLASH  &mt RSHIFT EXCLAMATION
                                          &kpls LCTRL      &kpls LALT   &kpls LCMD             &kp LANGUAGE_1  &kp LANGUAGE_2
                                                         &moto 2 0  &moto 3 1            &kp BACKSPACE   &kp SPACE
             >;
@@ -123,7 +123,7 @@
             bindings = <
 &kp ESCAPE        &kp PAGE_UP  &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME   &mtls CAPSLOCK DELETE                  &kp SPACE    &none  &msc SCRL_RIGHT  &msc SCRL_LEFT  &none     &none
 &none             &kp LEFT     &kp DOWN_ARROW  &kp RIGHT      &kp END    &mkp MB4                             &mkp MB5     &none  &mkp MB1        &mkp MB2         &mkp MB3  &none
-&mtls LEFT_SHIFT Z  &mtls LCTRL X  &mtls LALT C      &mtls LCMD V     &none      &kp TAB                              &kp ENTER    &none  &kpls RCTRL       &kpls RALT         &kpls RCMD  &kp RSHIFT
+&mt LEFT_SHIFT Z  &mtls LCTRL X  &mtls LALT C      &mtls LCMD V     &none      &kp TAB                              &kp ENTER    &none  &kpls RCTRL       &kpls RALT         &kpls RCMD  &kp RSHIFT
                                                &kpls LCTRL      &kpls LALT   &kpls LCMD             &msc SCRL_DOWN    &kp RS(TAB)
                                                               &moto 2 0  &moto 3 1            &msc SCRL_UP  &kp TAB
             >;
