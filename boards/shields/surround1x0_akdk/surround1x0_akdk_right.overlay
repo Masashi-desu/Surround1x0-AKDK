@@ -50,21 +50,20 @@
         device = <&trackball>;
         /* Pointer系: ハードの向き補正として X と Y を反転（スクロールとは別パイプライン） */
         input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
-        
-        /* Scroll系 (Mac): Xのみ反転。ナチュラルスクロールON時に従来の体感へ */
-        /* Mac用: ナチュラルスクロールON時 */
+
+        /* Scroll系: Mac/Win で個別にマッピング */
         scroller_mac {
+            /* Mac用: ナチュラルスクロールON時、従来体感に合わせてXのみ反転 */
             layers = <5>;
             input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT)>, <&zip_scroll_scaler 1 128>;
             process-next;
+        };
 
-        /* Win用: TODO */
-        /* scroller_win {
-            layers = <6>; // Win用スクロールレイヤを設定（必要に応じて変更）
+        scroller_win {
+            /* Win用: 通常の体感に合わせてYのみ反転 */
+            layers = <6>;
             input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_transform (INPUT_TRANSFORM_Y_INVERT)>, <&zip_scroll_scaler 1 128>;
             process-next;
-        }; */
-
         };
     };
 };

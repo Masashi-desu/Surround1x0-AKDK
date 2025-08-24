@@ -6,13 +6,16 @@
 #include "../dts/layout_shift.dtsi"
 
 // ZMK用のキーマップ設定ファイル
-// レイヤー構成:
-// - Default: 通常のタイピング用
-// - Move: カーソル移動・スクロール・マウス入力用
-// - Char: 記号や括弧などの入力用
-// - num: 数字入力・テンキー配列
-// - function: ファンクションキー (F1〜F12)
-// - bt: Bluetoothデバイス選択と切替操作
+// レイヤー構成（上から定義順 = レイヤー番号）:
+// 0: Default     …… 通常のタイピング用
+// 1: Move        …… カーソル移動・スクロール・マウス入力用
+// 2: Char        …… 記号や括弧などの入力用
+// 3: Num         …… 数字入力・テンキー配列
+// 4: Function    …… ファンクションキー (F1〜F12)
+// 5: ScrollMac   …… スクロール・トラックボール操作 (Mac用)
+// 6: ScrollWin   …… スクロール・トラックボール操作 (Windows用)
+// 7: Recess      …… すべてのレイヤーを無効化してデフォルトに戻す
+// 8: Setting     …… Bluetooth選択/切替・出力切替・レイアウトシフト等の設定
 
 / {
     combos {
@@ -27,14 +30,14 @@
         // Bluetooth設定レイヤーに一時移動
 
         moSettings {
-            bindings = <&mo 7>;
+            bindings = <&mo 8>;
             key-positions = <0 12 24>;
         };
 
         // すべてのレイヤーを無効化してデフォルトレイヤーに戻す
 
         moRecess {
-            bindings = <&mo 6>;
+            bindings = <&mo 7>;
             key-positions = <1 13 25>;
         };
 
@@ -124,7 +127,17 @@
             >;
         };
 
-        Scroll {
+        ScrollMac {
+            bindings = <
+&kp ESCAPE        &kp PAGE_UP    &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME    &mtls CAPSLOCK DELETE                  &kp SPACE    &none  &msc SCRL_RIGHT  &msc SCRL_LEFT  &none       &none
+&none             &kp LEFT       &kp DOWN_ARROW  &kp RIGHT      &kp END     &mkp MB4                               &mkp MB5     &none  &mkp MB1         &mkp MB2        &mkp MB3    &none
+&mt LEFT_SHIFT Z  &mtls LCTRL X  &mtls LALT C    &mtls LCMD V   &none       &kp TAB                                &kp ENTER    &none  &kpls RCTRL      &kpls RALT      &kpls RCMD  &kp RSHIFT
+                                                 &kpls LCTRL    &kpls LALT  &kpls LCMD             &msc SCRL_DOWN  &kp RS(TAB)
+                                                                &moto 2 0   &moto 3 1              &msc SCRL_UP    &kp TAB
+            >;
+        };
+
+        ScrollWin {
             bindings = <
 &kp ESCAPE        &kp PAGE_UP    &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME    &mtls CAPSLOCK DELETE                  &kp SPACE    &none  &msc SCRL_RIGHT  &msc SCRL_LEFT  &none       &none
 &none             &kp LEFT       &kp DOWN_ARROW  &kp RIGHT      &kp END     &mkp MB4                               &mkp MB5     &none  &mkp MB1         &mkp MB2        &mkp MB3    &none
