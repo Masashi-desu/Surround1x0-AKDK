@@ -61,7 +61,9 @@ static int mols_binding_released(struct zmk_behavior_binding *binding,
   const struct device *dev = zmk_behavior_get_binding(binding->behavior_dev);
   struct behavior_momentary_layer_shift_data *data = dev->data;
 
-  return zmk_keymap_layer_deactivate(data->active_layer);
+  uint8_t layer = data->active_layer;
+  data->active_layer = 0;
+  return zmk_keymap_layer_deactivate(layer);
 }
 
 #if IS_ENABLED(CONFIG_ZMK_BEHAVIOR_METADATA)
@@ -96,8 +98,11 @@ static const struct behavior_driver_api
 // Define behavior instances only if devicetree nodes exist
 #if DT_HAS_COMPAT_STATUS_OKAY(DT_DRV_COMPAT)
 #define MOLS_INST(n)                                                           \
-  BEHAVIOR_DT_INST_DEFINE(n, NULL, NULL, NULL, NULL, POST_KERNEL,              \
-                          CONFIG_KERNEL_INIT_PRIORITY_DEFAULT,                 \
+  static struct behavior_momentary_layer_shift_data                            \
+      behavior_momentary_layer_shift_data_##n = {};                            \
+  BEHAVIOR_DT_INST_DEFINE(n, NULL, NULL,                                       \
+                          &behavior_momentary_layer_shift_data_##n, NULL,      \
+                          POST_KERNEL, CONFIG_KERNEL_INIT_PRIORITY_DEFAULT,    \
                           &behavior_momentary_layer_shift_driver_api);
 
 DT_INST_FOREACH_STATUS_OKAY(MOLS_INST)
