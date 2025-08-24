@@ -49,6 +49,15 @@
       display-name = "Mouse Scroll with Layout Shift";
     };
 
+  // Layout shift set behavior alias
+  to_ls:
+    layout_shift_to {
+      compatible = "zmk,behavior-layout-shift-to";
+#binding-cells = <1>;
+      label = "LAYOUT_SHIFT_TO";
+      display-name = "Set Layout Shift";
+    };
+
   // Layout shift toggle behaviors
   tog_ls:
     toggle_layout_shift {
