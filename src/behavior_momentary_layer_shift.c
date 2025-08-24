@@ -1,5 +1,6 @@
 #define DT_DRV_COMPAT zmk_behavior_momentary_layer_shift
 
+#include "layouts/layout_common.h"
 #include <drivers/behavior.h>
 #include <stddef.h>
 #include <zephyr/device.h>
