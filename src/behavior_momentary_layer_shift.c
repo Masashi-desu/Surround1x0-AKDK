@@ -1,4 +1,4 @@
-#define DT_DRV_COMPAT zmk_behavior_momentary_layer_shift
+#define DT_DRV_COMPAT zmk_behavior_mols
 
 #include "layouts/layout_common.h"
 #include <drivers/behavior.h>

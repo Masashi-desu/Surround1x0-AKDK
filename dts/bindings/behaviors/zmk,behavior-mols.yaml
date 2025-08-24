@@ -3,6 +3,6 @@
 
 description: Momentary layer behavior that selects the target layer based on the current layout shift state
 
-compatible: "zmk,behavior-momentary-layer-shift"
+compatible: "zmk,behavior-mols"
 
 include: one_param.yaml
