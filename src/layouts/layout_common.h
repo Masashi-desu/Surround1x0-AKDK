@@ -10,6 +10,11 @@ struct keycode_mapping {
   zmk_mod_flags_t optional_modifiers;
 };
 
+struct msc_mapping {
+  uint32_t base;
+  uint32_t shifted;
+};
+
 #define OPTIONAL_SHIFT (MOD_LSFT | MOD_RSFT)
 #define OPTIONAL_CTRL (MOD_LCTL | MOD_RCTL)
 #define OPTIONAL_ALT (MOD_LALT | MOD_RALT)

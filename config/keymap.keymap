@@ -89,11 +89,11 @@
 
         Move {
             bindings = <
-&kp ESCAPE        &kp PAGE_UP    &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME    &mt CAPSLOCK DELETE                  &kp SPACE    &none  &msc SCRL_RIGHT  &msc SCRL_LEFT  &none       &none
+&kp ESCAPE        &kp PAGE_UP    &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME    &mt CAPSLOCK DELETE                  &kp SPACE    &none  &mscls SCRL_RIGHT  &mscls SCRL_LEFT  &none       &none
 &mols 5           &kp LEFT       &kp DOWN_ARROW  &kp RIGHT      &kp END     &mkp MB4                             &mkp MB5     &none  &mkp MB1         &mkp MB2        &mkp MB3    &mols 5
 &mt LEFT_SHIFT Z  &mtls LCTRL X  &mtls LALT C    &mtls LCMD V   &none       &kp TAB                              &kp ENTER    &none  &kpls RCTRL      &kpls RALT      &kpls RCMD  &kp RSHIFT
-                                                 &kpls LCTRL    &kpls LALT  &kpls LCMD           &msc SCRL_DOWN  &kp RS(TAB)
-                                                                &moto 2 0   &moto 3 1            &msc SCRL_UP    &kp TAB
+                                                 &kpls LCTRL    &kpls LALT  &kpls LCMD           &mscls SCRL_DOWN  &kp RS(TAB)
+                                                                &moto 2 0   &moto 3 1            &mscls SCRL_UP    &kp TAB
             >;
         };
 
@@ -129,21 +129,21 @@
 
         ScrollMac {
             bindings = <
-&kp ESCAPE        &kp PAGE_UP    &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME    &mtls CAPSLOCK DELETE                  &kp SPACE    &none  &msc SCRL_RIGHT  &msc SCRL_LEFT  &none       &none
+&kp ESCAPE        &kp PAGE_UP    &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME    &mtls CAPSLOCK DELETE                  &kp SPACE    &none  &mscls SCRL_RIGHT  &mscls SCRL_LEFT  &none       &none
 &none             &kp LEFT       &kp DOWN_ARROW  &kp RIGHT      &kp END     &mkp MB4                               &mkp MB5     &none  &mkp MB1         &mkp MB2        &mkp MB3    &none
 &mt LEFT_SHIFT Z  &mtls LCTRL X  &mtls LALT C    &mtls LCMD V   &none       &kp TAB                                &kp ENTER    &none  &kpls RCTRL      &kpls RALT      &kpls RCMD  &kp RSHIFT
-                                                 &kpls LCTRL    &kpls LALT  &kpls LCMD             &msc SCRL_DOWN  &kp RS(TAB)
-                                                                &moto 2 0   &moto 3 1              &msc SCRL_UP    &kp TAB
+                                                 &kpls LCTRL    &kpls LALT  &kpls LCMD             &mscls SCRL_DOWN  &kp RS(TAB)
+                                                                &moto 2 0   &moto 3 1              &mscls SCRL_UP    &kp TAB
             >;
         };
 
         ScrollWin {
             bindings = <
-&kp ESCAPE        &kp PAGE_UP    &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME    &mtls CAPSLOCK DELETE                  &kp SPACE    &none  &msc SCRL_RIGHT  &msc SCRL_LEFT  &none       &none
+&kp ESCAPE        &kp PAGE_UP    &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME    &mtls CAPSLOCK DELETE                  &kp SPACE    &none  &mscls SCRL_RIGHT  &mscls SCRL_LEFT  &none       &none
 &none             &kp LEFT       &kp DOWN_ARROW  &kp RIGHT      &kp END     &mkp MB4                               &mkp MB5     &none  &mkp MB1         &mkp MB2        &mkp MB3    &none
 &mt LEFT_SHIFT Z  &mtls LCTRL X  &mtls LALT C    &mtls LCMD V   &none       &kp TAB                                &kp ENTER    &none  &kpls RCTRL      &kpls RALT      &kpls RCMD  &kp RSHIFT
-                                                 &kpls LCTRL    &kpls LALT  &kpls LCMD             &msc SCRL_DOWN  &kp RS(TAB)
-                                                                &moto 2 0   &moto 3 1              &msc SCRL_UP    &kp TAB
+                                                 &kpls LCTRL    &kpls LALT  &kpls LCMD             &mscls SCRL_DOWN  &kp RS(TAB)
+                                                                &moto 2 0   &moto 3 1              &mscls SCRL_UP    &kp TAB
             >;
         };
 
