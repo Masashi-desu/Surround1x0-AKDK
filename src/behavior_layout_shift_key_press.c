@@ -1,102 +1,99 @@
 #define DT_DRV_COMPAT zmk_behavior_layout_shift_key_press
 
+#include <drivers/behavior.h>
+#include <dt-bindings/zmk/hid_usage.h>
+#include <dt-bindings/zmk/hid_usage_pages.h>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/modifiers.h>
 #include <zephyr/device.h>
 #include <zephyr/kernel.h>
 #include <zephyr/logging/log.h>
-#include <drivers/behavior.h>
 #include <zmk/behavior.h>
 #include <zmk/event_manager.h>
 #include <zmk/events/keycode_state_changed.h>
 #include <zmk/hid.h>
 #include <zmk/keys.h>
-#include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/modifiers.h>
-#include <dt-bindings/zmk/hid_usage.h>
-#include <dt-bindings/zmk/hid_usage_pages.h>
 
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 // External function to check layout shift state
 extern bool zmk_layout_shift_is_active(void);
 
-// Keycode mapping structure
-struct keycode_mapping {
-    uint32_t us_keycode;
-    uint32_t target_keycode;
-    zmk_mod_flags_t optional_modifiers;  // Bitmask of modifiers that are optional during matching
-};
-
-// Convenient modifier mask definitions (defined before including layouts)
-#define OPTIONAL_SHIFT  (MOD_LSFT | MOD_RSFT)
-#define OPTIONAL_CTRL   (MOD_LCTL | MOD_RCTL)
-#define OPTIONAL_ALT    (MOD_LALT | MOD_RALT)
-#define OPTIONAL_GUI    (MOD_LGUI | MOD_RGUI)
-#define OPTIONAL_ALL    (0xFF)
-#define OPTIONAL_NONE   (0)
+// Common layout definitions and mapping structures
+#include "layouts/layout_common.h"
 
 // Include all layout definitions (with conditional compilation)
 #include "layouts/index.h"
 
 #define LAYOUT_MAP_SIZE (sizeof(layout_map) / sizeof(layout_map[0]))
 
-
-// Function to lookup mapped keycode from input keycode with optional modifier support
-// Returns the mapped keycode, and optionally stores the matched layout entry index
-static uint32_t lookup_mapped_keycode(uint32_t input_keycode, int *matched_index) {
-    // Only apply mapping if layout shift is active
-    if (!zmk_layout_shift_is_active()) {
-        return input_keycode;
-    }
-
-    // Get current explicit modifier state and any modifiers embedded in the keycode
-    zmk_mod_flags_t current_mods = zmk_hid_get_explicit_mods();
-    zmk_mod_flags_t keycode_mods = SELECT_MODS(input_keycode);
-
-    // Combine explicit modifiers with modifiers from the keycode
-    zmk_mod_flags_t total_input_mods = current_mods | keycode_mods;
-
-    // Get the base keycode without modifiers for comparison
-    uint32_t base_input = STRIP_MODS(input_keycode);
-
-    // Look up in mapping table with optional modifier support
-    for (size_t i = 0; i < LAYOUT_MAP_SIZE; i++) {
-        uint32_t base_us = STRIP_MODS(layout_map[i].us_keycode);
-        zmk_mod_flags_t us_mods = SELECT_MODS(layout_map[i].us_keycode);
-
-        // Check if base keycodes match
-        if (base_input == base_us) {
-            // Check if non-optional modifiers match
-            zmk_mod_flags_t required_mods = us_mods & ~layout_map[i].optional_modifiers;
-            zmk_mod_flags_t input_required_mods = total_input_mods & ~layout_map[i].optional_modifiers;
-
-            if (required_mods == input_required_mods) {
-                // Match found! Apply target keycode with layout-defined modifiers
-                uint32_t target_base = STRIP_MODS(layout_map[i].target_keycode);
-                zmk_mod_flags_t target_mods = SELECT_MODS(layout_map[i].target_keycode);
-
-                // Combine target modifiers with non-optional input modifiers
-                zmk_mod_flags_t final_mods = target_mods | (total_input_mods & layout_map[i].optional_modifiers);
-
-                uint32_t result = (final_mods != 0) ? APPLY_MODS(final_mods, target_base) : target_base;
-
-                // Store the matched index if caller wants it
-                if (matched_index != NULL) {
-                    *matched_index = i;
-                }
-
-                LOG_DBG("LAYOUT_SHIFT: Mapping %08X -> %08X (input_mods: %02X, required: %02X, target_mods: %02X, final: %02X)",
-                        input_keycode, result, total_input_mods, required_mods, target_mods, final_mods);
-                return result;
-            }
-        }
-    }
-
-    // If no mapping found, return original keycode
-    if (matched_index != NULL) {
-        *matched_index = -1;  // Indicate no match found
-    }
-    LOG_DBG("LAYOUT_SHIFT: No mapping found for %08X", input_keycode);
+// Function to lookup mapped keycode from input keycode with optional modifier
+// support Returns the mapped keycode, and optionally stores the matched layout
+// entry index
+static uint32_t lookup_mapped_keycode(uint32_t input_keycode,
+                                      int *matched_index) {
+  // Only apply mapping if layout shift is active
+  if (!zmk_layout_shift_is_active()) {
     return input_keycode;
+  }
+
+  // Get current explicit modifier state and any modifiers embedded in the
+  // keycode
+  zmk_mod_flags_t current_mods = zmk_hid_get_explicit_mods();
+  zmk_mod_flags_t keycode_mods = SELECT_MODS(input_keycode);
+
+  // Combine explicit modifiers with modifiers from the keycode
+  zmk_mod_flags_t total_input_mods = current_mods | keycode_mods;
+
+  // Get the base keycode without modifiers for comparison
+  uint32_t base_input = STRIP_MODS(input_keycode);
+
+  // Look up in mapping table with optional modifier support
+  for (size_t i = 0; i < LAYOUT_MAP_SIZE; i++) {
+    uint32_t base_us = STRIP_MODS(layout_map[i].us_keycode);
+    zmk_mod_flags_t us_mods = SELECT_MODS(layout_map[i].us_keycode);
+
+    // Check if base keycodes match
+    if (base_input == base_us) {
+      // Check if non-optional modifiers match
+      zmk_mod_flags_t required_mods =
+          us_mods & ~layout_map[i].optional_modifiers;
+      zmk_mod_flags_t input_required_mods =
+          total_input_mods & ~layout_map[i].optional_modifiers;
+
+      if (required_mods == input_required_mods) {
+        // Match found! Apply target keycode with layout-defined modifiers
+        uint32_t target_base = STRIP_MODS(layout_map[i].target_keycode);
+        zmk_mod_flags_t target_mods = SELECT_MODS(layout_map[i].target_keycode);
+
+        // Combine target modifiers with non-optional input modifiers
+        zmk_mod_flags_t final_mods =
+            target_mods | (total_input_mods & layout_map[i].optional_modifiers);
+
+        uint32_t result = (final_mods != 0)
+                              ? APPLY_MODS(final_mods, target_base)
+                              : target_base;
+
+        // Store the matched index if caller wants it
+        if (matched_index != NULL) {
+          *matched_index = i;
+        }
+
+        LOG_DBG("LAYOUT_SHIFT: Mapping %08X -> %08X (input_mods: %02X, "
+                "required: %02X, target_mods: %02X, final: %02X)",
+                input_keycode, result, total_input_mods, required_mods,
+                target_mods, final_mods);
+        return result;
+      }
+    }
+  }
+
+  // If no mapping found, return original keycode
+  if (matched_index != NULL) {
+    *matched_index = -1; // Indicate no match found
+  }
+  LOG_DBG("LAYOUT_SHIFT: No mapping found for %08X", input_keycode);
+  return input_keycode;
 }
 
 // Storage for tracking key press/release mappings
