@@ -16,7 +16,7 @@ static const struct keycode_mapping layout_map[] = {
 };
 #ifdef DEFINE_LAYER_MAPPING
 static const struct layer_mapping layer_map[] = {
-    {6, 7}, /* Layer 6 -> Layer 7 when layout shift is active */
+    {5, 6}, /* Layer 5 -> Layer 6 when layout shift is active */
 };
 #define LAYER_MAP_DEFINED
 #endif
