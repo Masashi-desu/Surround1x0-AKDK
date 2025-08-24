@@ -93,6 +93,12 @@ static const struct behavior_driver_api
 #endif
 };
 
-BEHAVIOR_DT_INST_DEFINE(0, NULL, NULL, NULL, NULL, POST_KERNEL,
-                        CONFIG_KERNEL_INIT_PRIORITY_DEFAULT,
-                        &behavior_momentary_layer_shift_driver_api);
+// Define behavior instances only if devicetree nodes exist
+#if DT_HAS_COMPAT_STATUS_OKAY(DT_DRV_COMPAT)
+#define MOLS_INST(n)                                                           \
+  BEHAVIOR_DT_INST_DEFINE(n, NULL, NULL, NULL, NULL, POST_KERNEL,              \
+                          CONFIG_KERNEL_INIT_PRIORITY_DEFAULT,                 \
+                          &behavior_momentary_layer_shift_driver_api);
+
+DT_INST_FOREACH_STATUS_OKAY(MOLS_INST)
+#endif
