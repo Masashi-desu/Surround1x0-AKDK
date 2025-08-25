@@ -1,3 +1,11 @@
+/*
+ * MIT License
+ *
+ * Original code by kot149 (https://github.com/kot149/zmk-layout-shift)
+ * See https://opensource.org/licenses/MIT for license details.
+ * Forked and modified for Surround1x0-AKDK.
+ */
+
 #define DT_DRV_COMPAT zmk_behavior_mscls
 
 #include "layouts/layout_common.h"

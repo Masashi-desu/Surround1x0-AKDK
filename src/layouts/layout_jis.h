@@ -1,3 +1,11 @@
+/*
+ * MIT License
+ *
+ * Original code by kot149 (https://github.com/kot149/zmk-layout-shift)
+ * See https://opensource.org/licenses/MIT for license details.
+ * Forked and modified for Surround1x0-AKDK.
+ */
+
 #ifdef CONFIG_LAYOUT_SHIFT_TARGET_JIS
 #define LAYOUT_DEFINED
 // Japanese (JIS) keyboard layout mappings
