@@ -1,0 +1,11 @@
+description: Layout shift-aware mouse scroll behavior that maps scroll direction based on the current layout shift state
+
+compatible: "zmk,behavior-mscls"
+
+include: one_param.yaml
+
+properties:
+  msc:
+    type: phandle
+    required: true
+    description: Mouse scroll device used to send scroll events
