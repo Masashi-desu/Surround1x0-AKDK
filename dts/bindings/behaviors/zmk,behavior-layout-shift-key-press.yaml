@@ -1,0 +1,8 @@
+# Copyright (c) 2024 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+description: Layout shift custom key press behavior that maps keycodes according to the current layout shift state
+
+compatible: "zmk,behavior-layout-shift-key-press"
+
+include: one_param.yaml

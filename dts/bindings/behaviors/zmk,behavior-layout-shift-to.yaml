@@ -1,0 +1,8 @@
+# Copyright (c) 2024 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+description: Layout shift set behavior
+
+compatible: "zmk,behavior-layout-shift-to"
+
+include: one_param.yaml
