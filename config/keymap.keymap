@@ -81,39 +81,39 @@
             bindings = <
 &mt ESC Q     &kp L          &kp U         &kp COMMA     &kp PERIOD     &mt CAPSLOCK DELETE                 &kp SPACE            &kp F  &kp W          &kp R         &kp Y         &kp P
 &kp E         &kp I          &kp A         &kp O         &kp MINUS      &mt HOME LEFT_ARROW                 &mt END RIGHT_ARROW  &kp K  &kp T          &kp N         &kp S         &kp H
-&mt LSHIFT Z  &mtls LCTRL X  &mtls LALT C  &mtls LCMD V  &kp SEMICOLON  &kp TAB                             &kp ENTER            &kp G  &mtls RCTRL D  &mtls RALT M  &mtls RCMD J  &mt LSHIFT B
-                                           &kpls RCTRL   &kpls RALT     &kpls LCMD           &kp LANG1      &kp LANG2
-                                                         &moto 2 0      &moto 3 1            &kp BACKSPACE  &kp SPACE
+&mt LSHIFT Z  &mtls LCTRL X  &mtls LALT C  &mtls LCMD V  &kp SEMICOLON  &kp TAB                             &kp ENTER            &kp G  &mtls RCTRL D  &mtls RALT M  &mtls RCMD J  &mt RSHIFT B
+                                           &kpls RCTRL   &kpls RALT     &kpls LCMD                          &kp LANG1            &kp LANG2
+                                                         &moto 2 0      &moto 3 1                           &kp BACKSPACE        &kp SPACE
             >;
         };
 
         Move {
             bindings = <
-&kp ESCAPE        &kp PAGE_UP    &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME    &mt CAPSLOCK DELETE                  &kp SPACE    &none  &mscls SCRL_RIGHT  &mscls SCRL_LEFT  &none       &none
-&mols 5           &kp LEFT       &kp DOWN_ARROW  &kp RIGHT      &kp END     &mkp MB4                             &mkp MB5     &none  &mkp MB1         &mkp MB2        &mkp MB3    &mols 5
-&mt LEFT_SHIFT Z  &mtls LCTRL X  &mtls LALT C    &mtls LCMD V   &none       &kp TAB                              &kp ENTER    &none  &kpls RCTRL      &kpls RALT      &kpls RCMD  &kp RSHIFT
-                                                 &kpls LCTRL    &kpls LALT  &kpls LCMD           &mscls SCRL_DOWN  &kp RS(TAB)
-                                                                &moto 2 0   &moto 3 1            &mscls SCRL_UP    &kp TAB
+&kp ESCAPE        &kp PAGE_UP    &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME    &mt CAPSLOCK DELETE                  &kp SPACE         &none  &mscls SCRL_RIGHT  &mscls SCRL_LEFT  &none       &none
+&mols 5           &kp LEFT       &kp DOWN_ARROW  &kp RIGHT      &kp END     &mkp MB4                             &mkp MB5          &none  &mkp MB1           &mkp MB2          &mkp MB3    &mols 5
+&mt LEFT_SHIFT Z  &mtls LCTRL X  &mtls LALT C    &mtls LCMD V   &none       &kp TAB                              &kp ENTER         &none  &kpls RCTRL        &kpls RALT        &kpls RCMD  &kp RSHIFT
+                                                 &kpls LCTRL    &kpls LALT  &kpls LCMD                           &mscls SCRL_DOWN  &kp RS(TAB)
+                                                                &moto 2 0   &moto 3 1                            &mscls SCRL_UP    &kp TAB
             >;
         };
 
         Char {
             bindings = <
-&kp ESCAPE  &kp PAGE_UP  &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME    &mt CAPSLOCK DELETE                  &kp SPACE       &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp MINUS      &kp EQUAL  &kp ASTERISK
-&mo 5       &kp LEFT     &kp DOWN_ARROW  &kp RIGHT      &kp END     &mkp MB4                             &mkp MB5        &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SEMICOLON  &kp SQT    &kp GRAVE
-&kp LSHIFT  &kpls LCTRL  &kpls LALT      &kpls LCMD     &none       &kp TAB                              &kp ENTER       &kp COMMA             &kp PERIOD             &kp BACKSLASH  &kp SLASH  &mt RSHIFT EXCLAMATION
-                                         &kpls LCTRL    &kpls LALT  &kpls LCMD           &kp LANGUAGE_1  &kp LANGUAGE_2
-                                                        &moto 2 0   &moto 3 1            &kp BACKSPACE   &kp SPACE
+&kp ESCAPE  &kp PAGE_UP  &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME    &mt CAPSLOCK DELETE                  &kp SPACE       &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp MINUS             &kp EQUAL         &kp ASTERISK
+&mo 5       &kp LEFT     &kp DOWN_ARROW  &kp RIGHT      &kp END     &mkp MB4                             &mkp MB5        &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp SEMICOLON         &kp SQT           &kp GRAVE
+&kp LSHIFT  &kpls LCTRL  &kpls LALT      &kpls LCMD     &none       &kp TAB                              &kp ENTER       &kp COMMA             &mtls RCTRL PERIOD     &mtls RALT BACKSLASH  &mtls RCMD SLASH  &mt RSHIFT EXCLAMATION
+                                         &kpls LCTRL    &kpls LALT  &kpls LCMD                           &kp LANGUAGE_1  &kp LANGUAGE_2
+                                                        &moto 2 0   &moto 3 1                            &kp BACKSPACE   &kp SPACE
             >;
         };
 
         Num {
             bindings = <
-&kp ESC     &kp PAGE_UP     &kp UP_ARROW    &kp PAGE_DOWN    &kp HOME    &mtls CAPSLOCK DELETE                  &kp SPACE       &kp SLASH     &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp MINUS
-&mo 5       &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp END     &mkp MB4                               &mkp MB5        &kp ASTERISK  &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp PLUS
-&kp LSHIFT  &kpls LCTRL     &kpls LALT      &kpls LCMD       &none       &kp TAB                                &kp ENTER       &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp PERIOD
-                                            &kpls LCTRL      &kpls LALT  &kpls LCMD             &kp LANGUAGE_1  &kp LANGUAGE_2
-                                                             &moto 2 0   &moto 3 1              &kp BACKSPACE   &kp SPACE
+&kp ESC     &kp PAGE_UP     &kp UP_ARROW    &kp PAGE_DOWN    &kp HOME    &mtls CAPSLOCK DELETE                  &kp SPACE       &kp SLASH     &kp NUMBER_7          &kp NUMBER_8         &kp NUMBER_9         &kp MINUS
+&mo 5       &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp END     &mkp MB4                               &mkp MB5        &kp ASTERISK  &kp NUMBER_4          &kp NUMBER_5         &kp NUMBER_6         &kp PLUS
+&kp LSHIFT  &kpls LCTRL     &kpls LALT      &kpls LCMD       &none       &kp TAB                                &kp ENTER       &kp NUMBER_0  &mtls RCTRL NUMBER_1  &mtls RALT NUMBER_2  &mtls RCMD NUMBER_3  &mt RSHIFT PERIOD
+                                            &kpls LCTRL      &kpls LALT  &kpls LCMD                             &kp LANGUAGE_1  &kp LANGUAGE_2
+                                                             &moto 2 0   &moto 3 1                              &kp BACKSPACE   &kp SPACE
             >;
         };
 
@@ -122,8 +122,8 @@
 &kp C_BRIGHTNESS_DEC  &kp C_BRIGHTNESS_INC  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &kp K_MUTE  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP
 &kp F1                &kp F2                &kp F3  &kp F4  &kp F5  &kp F6          &kp F7  &kp F8  &kp F9  &kp F10     &kp F11            &kp F12
 &trans                &trans                &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans      &trans             &trans
-                                                    &trans  &trans  &trans  &trans  &trans
-                                                            &trans  &trans  &trans  &trans
+                                                    &trans  &trans  &trans          &trans  &trans
+                                                            &trans  &trans          &trans  &trans
             >;
         };
 
@@ -132,8 +132,8 @@
 &kp ESCAPE        &kp PAGE_UP    &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME    &mtls CAPSLOCK DELETE                  &kp SPACE    &none  &mscls SCRL_RIGHT  &mscls SCRL_LEFT  &none       &none
 &none             &kp LEFT       &kp DOWN_ARROW  &kp RIGHT      &kp END     &mkp MB4                               &mkp MB5     &none  &mkp MB1         &mkp MB2        &mkp MB3    &none
 &mt LEFT_SHIFT Z  &mtls LCTRL X  &mtls LALT C    &mtls LCMD V   &none       &kp TAB                                &kp ENTER    &none  &kpls RCTRL      &kpls RALT      &kpls RCMD  &kp RSHIFT
-                                                 &kpls LCTRL    &kpls LALT  &kpls LCMD             &mscls SCRL_DOWN  &kp RS(TAB)
-                                                                &moto 2 0   &moto 3 1              &mscls SCRL_UP    &kp TAB
+                                                 &kpls LCTRL    &kpls LALT  &kpls LCMD                             &mscls SCRL_DOWN  &kp RS(TAB)
+                                                                &moto 2 0   &moto 3 1                              &mscls SCRL_UP    &kp TAB
             >;
         };
 
@@ -142,8 +142,8 @@
 &kp ESCAPE        &kp PAGE_UP    &kp UP_ARROW    &kp PAGE_DOWN  &kp HOME    &mtls CAPSLOCK DELETE                  &kp SPACE    &none  &mscls SCRL_RIGHT  &mscls SCRL_LEFT  &none       &none
 &none             &kp LEFT       &kp DOWN_ARROW  &kp RIGHT      &kp END     &mkp MB4                               &mkp MB5     &none  &mkp MB1         &mkp MB2        &mkp MB3    &none
 &mt LEFT_SHIFT Z  &mtls LCTRL X  &mtls LALT C    &mtls LCMD V   &none       &kp TAB                                &kp ENTER    &none  &kpls RCTRL      &kpls RALT      &kpls RCMD  &kp RSHIFT
-                                                 &kpls LCTRL    &kpls LALT  &kpls LCMD             &mscls SCRL_DOWN  &kp RS(TAB)
-                                                                &moto 2 0   &moto 3 1              &mscls SCRL_UP    &kp TAB
+                                                 &kpls LCTRL    &kpls LALT  &kpls LCMD                             &mscls SCRL_DOWN  &kp RS(TAB)
+                                                                &moto 2 0   &moto 3 1                              &mscls SCRL_UP    &kp TAB
             >;
         };
 
@@ -152,8 +152,8 @@
 &none  &none  &none  &none  &none  &kp C_POWER                  &none  &none  &none  &none  &none  &none
 &none  &none  &none  &none  &none  &kp C_AL_SCREENSAVER         &none  &none  &none  &none  &none  &none
 &none  &none  &none  &none  &none  &none                        &none  &none  &none  &none  &none  &none
-                     &none  &none  &none                 &none  &none
-                            &none  &none                 &none  &none
+                     &none  &none  &none                        &none  &none
+                            &none  &none                        &none  &none
             >;
         };
 
@@ -162,8 +162,8 @@
 &none  &none  &none  &none  &none  &bt BT_CLR             &to_ls 0      &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
 &none  &none  &none  &none  &none  &studio_unlock         &to_ls 1      &none         &none         &none         &none         &none
 &none  &none  &none  &none  &none  &out OUT_TOG           &tog_ls       &none         &none         &none         &bt BT_PRV    &bt BT_NXT
-                     &none  &none  &none           &none  &none
-                            &none  &none           &none  &none
+                     &none  &none  &none                  &none  &none
+                            &none  &none                  &none  &none
             >;
         };
     };
