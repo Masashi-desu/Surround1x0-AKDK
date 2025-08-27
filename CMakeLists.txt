@@ -16,3 +16,13 @@ if(CONFIG_LAYOUT_SHIFT)
     )
   endif()
 endif()
+
+if(CONFIG_LAYOUT_ENV)
+  if ((NOT CONFIG_ZMK_SPLIT) OR CONFIG_ZMK_SPLIT_ROLE_CENTRAL)
+    target_sources_ifdef(CONFIG_LAYOUT_ENV app PRIVATE
+      ${CMAKE_CURRENT_LIST_DIR}/src/behavior_layout_env_key_press.c
+      ${CMAKE_CURRENT_LIST_DIR}/src/behavior_layout_env_toggle.c
+      ${CMAKE_CURRENT_LIST_DIR}/src/behavior_layout_env_to.c
+    )
+  endif()
+endif()

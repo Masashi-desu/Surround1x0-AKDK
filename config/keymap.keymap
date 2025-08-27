@@ -4,6 +4,7 @@
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
 #include "../dts/layout_shift.dtsi"
+#include "../dts/layout_env.dtsi"
 
 // ZMK用のキーマップ設定ファイル
 // レイヤー構成（上から定義順 = レイヤー番号）:
