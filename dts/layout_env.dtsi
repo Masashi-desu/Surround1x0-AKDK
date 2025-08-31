@@ -1,0 +1,59 @@
+/*
+ * Copyright (c) 2024 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/* Layout Environment Module */
+
+#include <dt-bindings/zmk/keys.h>
+
+/ {
+  behaviors {
+    // Layout environment aware key press behavior alias
+    kple:
+      layout_env_key_press {
+        compatible = "zmk,behavior-layout-env-key-press";
+        #binding-cells = <1>;
+        label = "LAYOUT_ENV_KEY_PRESS";
+        display-name = "Key Press with Layout Env";
+      };
+
+    // Layout environment set behavior alias
+    to_le:
+      layout_env_to {
+        compatible = "zmk,behavior-layout-env-to";
+        #binding-cells = <1>;
+        label = "LAYOUT_ENV_TO";
+        display-name = "Set Layout Env";
+      };
+
+    // Layout environment toggle behaviors
+    tog_le:
+      toggle_layout_env {
+        compatible = "zmk,behavior-layout-env-toggle";
+        #binding-cells = <0>;
+        toggle-mode = "flip";
+        label = "LAYOUT_ENV_TOGGLE";
+        display-name = "Toggle Layout Env";
+      };
+
+    tog_le_on:
+      toggle_layout_env_on {
+        compatible = "zmk,behavior-layout-env-toggle";
+        #binding-cells = <0>;
+        toggle-mode = "on";
+        label = "LAYOUT_ENV_TOGGLE_ON";
+        display-name = "Toggle Layout Env On";
+      };
+
+    tog_le_off:
+      toggle_layout_env_off {
+        compatible = "zmk,behavior-layout-env-toggle";
+        #binding-cells = <0>;
+        toggle-mode = "off";
+        label = "LAYOUT_ENV_TOGGLE_OFF";
+        display-name = "Toggle Layout Env Off";
+      };
+  };
+};

@@ -41,3 +41,20 @@ config LAYOUT_SHIFT_PERSISTENT_STATE
       This feature requires CONFIG_SETTINGS to be enabled.
 
 endif
+
+config LAYOUT_ENV
+    bool "Layout Environment"
+    default y
+    help
+      Enable switching between US and JIS host layouts.
+
+if LAYOUT_ENV
+
+config LAYOUT_ENV_PERSISTENT_STATE
+    bool "Layout Environment Persistent State"
+    default y
+    select SETTINGS
+    help
+      Enable persistent storage of layout environment state across reboots.
+
+endif
