@@ -1,0 +1,23 @@
+# Copyright (c) 2024 The ZMK Contributors
+# SPDX-License-Identifier: MIT
+
+description: Layout environment toggle behavior
+
+compatible: "zmk,behavior-layout-env-toggle"
+
+include: zero_param.yaml
+
+properties:
+  toggle-mode:
+    type: string
+    required: false
+    default: "flip"
+    enum:
+      - "on"
+      - "off"
+      - "flip"
+    description: |
+      Toggle mode for the layout environment behavior:
+      - "on": Enable layout environment
+      - "off": Disable layout environment
+      - "flip": Toggle layout environment state
