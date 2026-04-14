@@ -1,0 +1,519 @@
+layout:
+  zmk_keyboard: keymap
+layers:
+  Default:
+  - t: Q
+    h: ESC
+  - L
+  - U
+  - ','
+  - .
+  - t: DELETE
+    h: CAPSLOCK
+  - SPACE
+  - F
+  - W
+  - R
+  - Y
+  - P
+  - E
+  - I
+  - A
+  - O
+  - '-'
+  - t: LEFT ARROW
+    h: HOME
+  - t: RIGHT ARROW
+    h: END
+  - K
+  - T
+  - N
+  - S
+  - H
+  - t: Z
+    h: LSHIFT
+  - t: X
+    h: Ctrl/Alt
+  - t: C
+    h: Opt/Win
+  - t: V
+    h: Cmd/Ctrl
+  - ;
+  - TAB
+  - ENTER
+  - G
+  - t: D
+    h: Ctrl/Alt
+  - t: M
+    h: Opt/Win
+  - t: J
+    h: Cmd/Ctrl
+  - t: B
+    h: RSHIFT
+  - Ctrl/Alt
+  - Opt/Win
+  - Cmd/Ctrl
+  - LANG1
+  - LANG2
+  - t: Default
+    h: Char
+  - t: Move
+    h: Num
+  - BACKSPACE
+  - SPACE
+  Move:
+  - ESCAPE
+  - PAGE UP
+  - UP ARROW
+  - PAGE DOWN
+  - HOME
+  - t: DELETE
+    h: CAPSLOCK
+  - SPACE
+  - ''
+  - → / ←
+  - ← / →
+  - ''
+  - ''
+  - 'Scroll
+
+    Mac/Win'
+  - LEFT
+  - DOWN ARROW
+  - RIGHT
+  - END
+  - Back
+  - Fwd
+  - ''
+  - L Click
+  - R Click
+  - Mid Click
+  - 'Scroll
+
+    Mac/Win'
+  - t: Z
+    h: LEFT SHIFT
+  - t: X
+    h: Ctrl/Alt
+  - t: C
+    h: Opt/Win
+  - t: V
+    h: Cmd/Ctrl
+  - ''
+  - TAB
+  - ENTER
+  - ''
+  - Ctrl/Alt
+  - Opt/Win
+  - Cmd/Ctrl
+  - RSHIFT
+  - Ctrl/Alt
+  - Opt/Win
+  - Cmd/Ctrl
+  - ↓ / ↑
+  - Sft+TAB
+  - t: Default
+    h: Char
+  - t: Move
+    h: Num
+  - ↑ / ↓
+  - TAB
+  Char:
+  - ESCAPE
+  - PAGE UP
+  - UP ARROW
+  - PAGE DOWN
+  - HOME
+  - t: DELETE
+    h: CAPSLOCK
+  - SPACE
+  - '[ / ]'
+  - '] / \'
+  - '-'
+  - = / _
+  - '* / "'
+  - ScrollMac
+  - LEFT
+  - DOWN ARROW
+  - RIGHT
+  - END
+  - Back
+  - Fwd
+  - ( / *
+  - ) / (
+  - ;
+  - ''' / &'
+  - '` / {'
+  - LSHIFT
+  - Ctrl/Alt
+  - Opt/Win
+  - Cmd/Ctrl
+  - ''
+  - TAB
+  - ENTER
+  - ','
+  - t: .
+    h: Ctrl/Alt
+  - t: \ / ¥
+    h: Opt/Win
+  - t: /
+    h: Cmd/Ctrl
+  - t: '!'
+    h: RSHIFT
+  - Ctrl/Alt
+  - Opt/Win
+  - Cmd/Ctrl
+  - LANGUAGE 1
+  - LANGUAGE 2
+  - t: Default
+    h: Char
+    type: held
+  - t: Move
+    h: Num
+  - BACKSPACE
+  - SPACE
+  Num:
+  - ESC
+  - PAGE UP
+  - UP ARROW
+  - PAGE DOWN
+  - HOME
+  - t: Del
+    h: Caps
+  - SPACE
+  - /
+  - '7'
+  - '8'
+  - '9'
+  - '-'
+  - ScrollMac
+  - LEFT ARROW
+  - DOWN ARROW
+  - RIGHT ARROW
+  - END
+  - Back
+  - Fwd
+  - '* / "'
+  - '4'
+  - '5'
+  - '6'
+  - '+ / :'
+  - LSHIFT
+  - Ctrl/Alt
+  - Opt/Win
+  - Cmd/Ctrl
+  - ''
+  - TAB
+  - ENTER
+  - '0'
+  - t: '1'
+    h: Ctrl/Alt
+  - t: '2'
+    h: Opt/Win
+  - t: '3'
+    h: Cmd/Ctrl
+  - t: .
+    h: RSHIFT
+  - Ctrl/Alt
+  - Opt/Win
+  - Cmd/Ctrl
+  - LANGUAGE 1
+  - LANGUAGE 2
+  - t: Default
+    h: Char
+  - t: Move
+    h: Num
+    type: held
+  - BACKSPACE
+  - SPACE
+  Function:
+  - BRIGHTNESS DEC
+  - BRIGHTNESS INC
+  - t: ▽
+    type: trans
+  - t: ▽
+    type: trans
+  - t: ▽
+    type: trans
+  - t: ▽
+    type: trans
+  - t: ▽
+    type: trans
+  - t: ▽
+    type: trans
+  - t: ▽
+    type: trans
+  - MUTE
+  - VOLUME DOWN
+  - VOLUME UP
+  - F1
+  - F2
+  - F3
+  - F4
+  - F5
+  - F6
+  - F7
+  - F8
+  - F9
+  - F10
+  - F11
+  - F12
+  - t: ▽
+    type: trans
+  - t: ▽
+    type: trans
+  - t: ▽
+    type: trans
+  - t: ▽
+    type: trans
+  - t: ▽
+    type: trans
+  - t: ▽
+    type: trans
+  - t: ▽
+    type: trans
+  - t: ▽
+    type: trans
+  - t: ▽
+    type: trans
+  - t: ▽
+    type: trans
+  - t: ▽
+    type: trans
+  - t: ▽
+    type: trans
+  - t: ▽
+    type: trans
+  - t: ▽
+    type: trans
+  - t: ▽
+    type: trans
+  - t: ▽
+    type: trans
+  - t: ▽
+    type: trans
+  - t: ▽
+    type: trans
+  - type: held
+  - t: ▽
+    type: trans
+  - type: held
+  ScrollMac:
+  - ESCAPE
+  - PAGE UP
+  - UP ARROW
+  - PAGE DOWN
+  - HOME
+  - t: Del
+    h: Caps
+  - SPACE
+  - ''
+  - → / ←
+  - ← / →
+  - ''
+  - ''
+  - type: held
+  - LEFT
+  - DOWN ARROW
+  - RIGHT
+  - END
+  - Back
+  - Fwd
+  - ''
+  - L Click
+  - R Click
+  - Mid Click
+  - ''
+  - t: Z
+    h: LEFT SHIFT
+  - t: X
+    h: Ctrl/Alt
+  - t: C
+    h: Opt/Win
+  - t: V
+    h: Cmd/Ctrl
+  - ''
+  - TAB
+  - ENTER
+  - ''
+  - Ctrl/Alt
+  - Opt/Win
+  - Cmd/Ctrl
+  - RSHIFT
+  - Ctrl/Alt
+  - Opt/Win
+  - Cmd/Ctrl
+  - ↓ / ↑
+  - Sft+TAB
+  - t: Default
+    h: Char
+    type: held
+  - t: Move
+    h: Num
+  - ↑ / ↓
+  - TAB
+  ScrollWin:
+  - ESCAPE
+  - PAGE UP
+  - UP ARROW
+  - PAGE DOWN
+  - HOME
+  - t: Del
+    h: Caps
+  - SPACE
+  - ''
+  - → / ←
+  - ← / →
+  - ''
+  - ''
+  - ''
+  - LEFT
+  - DOWN ARROW
+  - RIGHT
+  - END
+  - Back
+  - Fwd
+  - ''
+  - L Click
+  - R Click
+  - Mid Click
+  - ''
+  - t: Z
+    h: LEFT SHIFT
+  - t: X
+    h: Ctrl/Alt
+  - t: C
+    h: Opt/Win
+  - t: V
+    h: Cmd/Ctrl
+  - ''
+  - TAB
+  - ENTER
+  - ''
+  - Ctrl/Alt
+  - Opt/Win
+  - Cmd/Ctrl
+  - RSHIFT
+  - Ctrl/Alt
+  - Opt/Win
+  - Cmd/Ctrl
+  - ↓ / ↑
+  - Sft+TAB
+  - t: Default
+    h: Char
+  - t: Move
+    h: Num
+  - ↑ / ↓
+  - TAB
+  Recess:
+  - ''
+  - type: held
+  - ''
+  - ''
+  - ''
+  - POWER
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - type: held
+  - ''
+  - ''
+  - ''
+  - AL SCREENSAVER
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - type: held
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  Setting:
+  - type: held
+  - ''
+  - ''
+  - ''
+  - ''
+  - BT CLR
+  - Mac
+  - t: BT
+    h: '0'
+  - t: BT
+    h: '1'
+  - t: BT
+    h: '2'
+  - t: BT
+    h: '3'
+  - t: BT
+    h: '4'
+  - type: held
+  - ''
+  - ''
+  - ''
+  - ''
+  - Studio
+  - Win
+  - ''
+  - ''
+  - ''
+  - JIS
+  - US
+  - type: held
+  - ''
+  - ''
+  - ''
+  - ''
+  - OUT TOG
+  - Mac/Win
+  - ''
+  - ''
+  - ''
+  - BT PRV
+  - BT NXT
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+combos:
+- p:
+  - 0
+  - 12
+  - 24
+  k: Setting
+- p:
+  - 1
+  - 13
+  - 25
+  k: Recess
+- p:
+  - 42
+  - 44
+  k: Function

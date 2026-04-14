@@ -1,0 +1,55 @@
+name: Draw keymap
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "config/keymap.keymap"
+      - "config/info.json"
+      - "dts/layout_env.dtsi"
+      - "dts/layout_shift.dtsi"
+      - "src/layouts/layout_jis.h"
+      - "src/layouts/layout_swap_ctrl_cmd.h"
+      - "keymap-drawer/config.yaml"
+      - "scripts/generate_keymap_drawer_artifacts.py"
+      - ".github/workflows/draw-keymap.yml"
+
+concurrency:
+  group: draw-keymap-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  draw:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install keymap-drawer
+        run: python -m pip install keymap-drawer==0.23.0
+
+      - name: Generate keymap assets
+        run: python scripts/generate_keymap_drawer_artifacts.py
+
+      - name: Commit generated artifacts
+        run: |
+          if [ -z "$(git status --porcelain -- keymap-drawer/ images/)" ]; then
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add keymap-drawer/ images/
+          git commit -m "chore: refresh keymap drawing"
+          git push
