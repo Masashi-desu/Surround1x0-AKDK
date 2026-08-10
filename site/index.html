@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b0d12" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <meta
+      name="description"
+      content="Surround1x0-AKDK keyboard GLB preview with colorway, isolation and exploded view controls."
+    />
+    <title>Surround1x0-AKDK — 3D Preview</title>
+  </head>
+  <body>
+    <main id="app">
+      <header class="topbar">
+        <h1>Surround1x0-AKDK</h1>
+      </header>
+
+      <section class="viewer-shell" aria-label="3Dモデルプレビュー">
+        <div class="viewport-panel">
+          <canvas id="viewport" aria-label="Surround1x0-AKDK 3Dモデル"></canvas>
+
+          <div class="loading-card" id="loadingCard" role="status" aria-live="polite">
+            <div class="loading-ring"></div>
+            <div>
+              <strong>モデルを準備しています</strong>
+              <span id="loadingDetail">GLBを読み込み中…</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="control-panel" aria-label="プレビュー設定">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">VIEW CONFIGURATION</p>
+              <h2>プレビュー設定</h2>
+            </div>
+            <span class="model-count" id="modelCount">— items</span>
+          </div>
+
+          <section class="control-section">
+            <label class="control-label" for="colorwaySelect">色の表示</label>
+            <div class="select-wrap">
+              <select id="colorwaySelect" disabled>
+                <option value="black">Black + Wine Red</option>
+                <option value="ivory">Warm Ivory + Cool Gray</option>
+                <option value="original">GLB Original</option>
+              </select>
+            </div>
+            <div class="swatches" id="swatches" aria-hidden="true">
+              <span style="--swatch: #101216"></span>
+              <span style="--swatch: #5b1424"></span>
+              <span style="--swatch: #8ea0ad"></span>
+            </div>
+          </section>
+
+          <section class="control-section">
+            <label class="control-label" for="visibilitySelect">表示対象</label>
+            <div class="select-wrap">
+              <select id="visibilitySelect" disabled>
+                <optgroup label="表示単位">
+                  <option value="all">すべて表示</option>
+                  <option value="group:left">左手側一式</option>
+                  <option value="group:right">右手側一式</option>
+                  <option value="group:keycaps">キーキャップ一式</option>
+                  <option value="group:switches">キースイッチ一式</option>
+                  <option value="group:sockets">スイッチソケット一式</option>
+                  <option value="group:pcb">PCB基板</option>
+                  <option value="group:controller">マイコン基板一式</option>
+                  <option value="group:conthrough">コンスルーピン一式</option>
+                  <option value="group:mouse_sensor">マウスセンサー一式</option>
+                  <option value="group:case">ケース上下</option>
+                  <option value="group:top_case">上ケース</option>
+                  <option value="group:bottom_case">下ケース</option>
+                  <option value="group:trackball">トラックボール</option>
+                  <option value="group:connectors">コネクタ</option>
+                </optgroup>
+                <optgroup label="キースイッチ（単体）" id="switchOptions"></optgroup>
+              </select>
+            </div>
+            <p class="control-help" id="visibilityHelp">全オブジェクトを表示します。</p>
+          </section>
+
+          <section class="control-section">
+            <span class="control-label">Exploded View</span>
+            <div class="segmented-control" role="group" aria-label="Exploded Viewモード">
+              <button type="button" class="mode-button is-active" data-view-mode="assembled" disabled>
+                組立
+              </button>
+              <button type="button" class="mode-button" data-view-mode="exploded" disabled>
+                分解
+              </button>
+            </div>
+
+            <div class="range-row">
+              <label for="explodeAmount">分解量</label>
+              <output id="explodeOutput" for="explodeAmount">100%</output>
+            </div>
+            <input
+              id="explodeAmount"
+              type="range"
+              min="0"
+              max="150"
+              step="1"
+              value="100"
+              disabled
+            />
+            <div class="layer-order" aria-label="分解順序">
+              <span>LOWER</span>
+              <i></i>
+              <span>UPPER</span>
+            </div>
+          </section>
+
+          <div class="panel-actions">
+            <button type="button" class="secondary-button" id="fitButton" disabled>
+              表示対象に合わせる
+            </button>
+            <button type="button" class="icon-button" id="resetButton" disabled title="視点をリセット" aria-label="視点をリセット">
+              ↺
+            </button>
+          </div>
+
+          <div class="interaction-hint">
+            <span>DRAG</span> 回転
+            <span>SHIFT + DRAG</span> 移動
+            <span>SCROLL</span> ズーム
+          </div>
+        </aside>
+      </section>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
