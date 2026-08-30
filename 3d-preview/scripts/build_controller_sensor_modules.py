@@ -27,7 +27,7 @@ ROOT = Path(__file__).resolve().parents[2]
 BLEND_PATH = ROOT / "3d-preview/Surround1x0-AKDK.blend"
 PCB_DIR = ROOT / "pcb"
 COLLECTION_NAME = "02e_Controller_Sensor"
-REVISION = "auto-kdk-controller-sensor-v5-trackball-right-pocket"
+REVISION = "auto-kdk-controller-sensor-v8-usb-c-centered"
 
 AUTO_KDK_SOURCE = "https://github.com/sekigon-gonnoc/auto-kdk"
 SENSOR_SOURCE = "https://github.com/sekigon-gonnoc/small-mouse-sensor-module"
@@ -40,6 +40,8 @@ MAIN_PCB_CENTER_Z = -1.85
 MAIN_PCB_THICKNESS = 1.60
 MAIN_PCB_TOP_Z = MAIN_PCB_CENTER_Z + MAIN_PCB_THICKNESS / 2
 MAIN_PCB_BOTTOM_Z = MAIN_PCB_CENTER_Z - MAIN_PCB_THICKNESS / 2
+MAIN_PCB_SOLDER_MASK_COLOR = (0.012, 0.028, 0.024, 1.0)
+MAIN_PCB_SOLDER_MASK_ROUGHNESS = 0.28
 
 # The red cut lines in wireless-controller-cut.png span 740 px while the full
 # placement envelope spans 249 px.  Anchoring that ratio to the 29 mm EasyEDA
@@ -105,6 +107,28 @@ CASE_USB_APERTURE_X = {
 }
 CASE_USB_APERTURE_Z = (-11.45, -3.45)
 CASE_USB_WALL_Y = {"Left": 56.697, "Right": 56.683}
+USB_C_SHELL_WIDTH = 8.90
+USB_C_SHELL_HEIGHT = 3.25
+USB_C_SHELL_DEPTH = 6.20
+USB_C_SHELL_RADIUS = 1.28
+USB_C_MOUTH_DEPTH = 0.24
+# The visible metal lip sits behind the lower-case outer wall; it must never
+# protrude from the enclosure.  Use the shallower wall coordinate so the
+# symmetric left/right receptacles both retain at least this recess.
+USB_C_FACE_RECESS = 0.35
+USB_C_SHELL_FRONT_Y = min(CASE_USB_WALL_Y.values()) - USB_C_MOUTH_DEPTH - USB_C_FACE_RECESS
+# USB Type-C Cable and Connector Specification R2.0, Figure 3-1.
+USB_C_SHELL_OPENING_WIDTH = 8.34
+USB_C_SHELL_OPENING_HEIGHT = 2.56
+USB_C_SHELL_OPENING_RADIUS = USB_C_SHELL_OPENING_HEIGHT / 2
+USB_C_CAVITY_WIDTH = 8.20
+USB_C_CAVITY_HEIGHT = 2.42
+USB_C_CAVITY_RADIUS = USB_C_CAVITY_HEIGHT / 2
+USB_C_TONGUE_WIDTH = 6.20
+USB_C_TONGUE_HEIGHT = 0.46
+USB_C_TONGUE_RADIUS = 0.20
+USB_C_CONTACT_COUNT_PER_SIDE = 12
+USB_C_CONTACT_PITCH = 0.50
 CASE_POWER_SLOT_CENTER = {
     "Left": (9.25, 28.50),
     "Right": (-9.25, 28.50),
@@ -262,6 +286,106 @@ def create_box(
         modifier.segments = segments
         modifier.limit_method = "ANGLE"
         bpy.ops.object.modifier_apply(modifier=modifier.name)
+    return obj
+
+
+def rounded_rect_xz_points(
+    center_x: float,
+    center_z: float,
+    width: float,
+    height: float,
+    radius: float,
+    *,
+    segments_per_corner: int = 8,
+) -> list[tuple[float, float]]:
+    radius = min(radius, width / 2, height / 2)
+    corners = (
+        (center_x + width / 2 - radius, center_z + height / 2 - radius, 0.0),
+        (center_x - width / 2 + radius, center_z + height / 2 - radius, 90.0),
+        (center_x - width / 2 + radius, center_z - height / 2 + radius, 180.0),
+        (center_x + width / 2 - radius, center_z - height / 2 + radius, 270.0),
+    )
+    points = []
+    for corner_x, corner_z, start_degrees in corners:
+        for index in range(segments_per_corner):
+            angle = math.radians(start_degrees + 90.0 * index / segments_per_corner)
+            points.append(
+                (
+                    corner_x + math.cos(angle) * radius,
+                    corner_z + math.sin(angle) * radius,
+                )
+            )
+    return points
+
+
+def create_xz_prism(
+    name: str,
+    outline: list[tuple[float, float]],
+    y_min: float,
+    y_max: float,
+    collection: bpy.types.Collection,
+    material: bpy.types.Material,
+) -> bpy.types.Object:
+    count = len(outline)
+    vertices = [(x, y_min, z) for x, z in outline]
+    vertices.extend((x, y_max, z) for x, z in outline)
+    faces = [
+        tuple(range(count)),
+        tuple(count + index for index in reversed(range(count))),
+    ]
+    for index in range(count):
+        nxt = (index + 1) % count
+        faces.append((index, count + index, count + nxt, nxt))
+    mesh = bpy.data.meshes.new(f"{name}_Mesh")
+    mesh.from_pydata(vertices, [], faces)
+    mesh.materials.append(material)
+    mesh.update()
+    obj = bpy.data.objects.new(name, mesh)
+    collection.objects.link(obj)
+    return obj
+
+
+def create_xz_ring(
+    name: str,
+    outer: list[tuple[float, float]],
+    inner: list[tuple[float, float]],
+    y_min: float,
+    y_max: float,
+    collection: bpy.types.Collection,
+    material: bpy.types.Material,
+) -> bpy.types.Object:
+    if len(outer) != len(inner):
+        raise ValueError("USB-C shell ring outlines must have matching vertex counts")
+    count = len(outer)
+    vertices = [(x, y_min, z) for x, z in outer]
+    vertices.extend((x, y_min, z) for x, z in inner)
+    vertices.extend((x, y_max, z) for x, z in outer)
+    vertices.extend((x, y_max, z) for x, z in inner)
+    faces = []
+    for index in range(count):
+        nxt = (index + 1) % count
+        outer_back = index
+        inner_back = count + index
+        outer_front = count * 2 + index
+        inner_front = count * 3 + index
+        outer_back_next = nxt
+        inner_back_next = count + nxt
+        outer_front_next = count * 2 + nxt
+        inner_front_next = count * 3 + nxt
+        faces.extend(
+            (
+                (outer_back, outer_back_next, inner_back_next, inner_back),
+                (outer_front, inner_front, inner_front_next, outer_front_next),
+                (outer_back, outer_front, outer_front_next, outer_back_next),
+                (inner_back, inner_back_next, inner_front_next, inner_front),
+            )
+        )
+    mesh = bpy.data.meshes.new(f"{name}_Mesh")
+    mesh.from_pydata(vertices, [], faces)
+    mesh.materials.append(material)
+    mesh.update()
+    obj = bpy.data.objects.new(name, mesh)
+    collection.objects.link(obj)
     return obj
 
 
@@ -497,6 +621,163 @@ def create_component_box(
     return mark_generated(obj, side, suffix.lower(), "controller")
 
 
+def append_box_geometry(
+    vertices: list[tuple[float, float, float]],
+    faces: list[tuple[int, ...]],
+    center: tuple[float, float, float],
+    size: tuple[float, float, float],
+) -> None:
+    cx, cy, cz = center
+    sx, sy, sz = size
+    base = len(vertices)
+    vertices.extend(
+        (
+            (cx - sx / 2, cy - sy / 2, cz - sz / 2),
+            (cx + sx / 2, cy - sy / 2, cz - sz / 2),
+            (cx + sx / 2, cy + sy / 2, cz - sz / 2),
+            (cx - sx / 2, cy + sy / 2, cz - sz / 2),
+            (cx - sx / 2, cy - sy / 2, cz + sz / 2),
+            (cx + sx / 2, cy - sy / 2, cz + sz / 2),
+            (cx + sx / 2, cy + sy / 2, cz + sz / 2),
+            (cx - sx / 2, cy + sy / 2, cz + sz / 2),
+        )
+    )
+    faces.extend(
+        tuple(base + index for index in face)
+        for face in (
+            (0, 3, 2, 1),
+            (4, 5, 6, 7),
+            (0, 1, 5, 4),
+            (1, 2, 6, 5),
+            (2, 3, 7, 6),
+            (3, 0, 4, 7),
+        )
+    )
+
+
+def create_usb_c_receptacle(
+    side: str,
+    assembly: bpy.types.Object,
+    collection: bpy.types.Collection,
+    materials: dict[str, bpy.types.Material],
+    center_x: float,
+) -> bpy.types.Object:
+    center_z = CONTROLLER_BOTTOM_Z - USB_C_SHELL_HEIGHT / 2
+    shell_front_y = USB_C_SHELL_FRONT_Y
+    shell_back_y = shell_front_y - USB_C_SHELL_DEPTH
+    shell_outline = rounded_rect_xz_points(
+        center_x,
+        center_z,
+        USB_C_SHELL_WIDTH,
+        USB_C_SHELL_HEIGHT,
+        USB_C_SHELL_RADIUS,
+    )
+    opening_outline = rounded_rect_xz_points(
+        center_x,
+        center_z,
+        USB_C_SHELL_OPENING_WIDTH,
+        USB_C_SHELL_OPENING_HEIGHT,
+        USB_C_SHELL_OPENING_RADIUS,
+    )
+    shell = create_xz_ring(
+        f"{side}_Controller_USB_C",
+        shell_outline,
+        opening_outline,
+        shell_back_y,
+        shell_front_y,
+        collection,
+        materials["metal"],
+    )
+    shell["connector_type"] = "USB Type-C receptacle"
+    shell["usb_c_part"] = "outer_shell"
+    shell["shell_opening_width_mm"] = USB_C_SHELL_OPENING_WIDTH
+    shell["shell_length_mm"] = 6.20
+    parent_local(shell, assembly)
+    mark_generated(shell, side, "usb_c", "controller")
+
+    mouth = create_xz_ring(
+        f"{side}_Controller_USB_C_Mouth",
+        shell_outline,
+        opening_outline,
+        shell_front_y,
+        shell_front_y + USB_C_MOUTH_DEPTH,
+        collection,
+        materials["metal"],
+    )
+    mouth["usb_c_part"] = "shell_mouth"
+    mouth["opening_width_mm"] = USB_C_SHELL_OPENING_WIDTH
+    mouth["opening_height_mm"] = USB_C_SHELL_OPENING_HEIGHT
+    parent_local(mouth, assembly)
+    mark_generated(mouth, side, "usb_c_mouth", "controller")
+
+    cavity_outline = rounded_rect_xz_points(
+        center_x,
+        center_z,
+        USB_C_CAVITY_WIDTH,
+        USB_C_CAVITY_HEIGHT,
+        USB_C_CAVITY_RADIUS,
+    )
+    cavity = create_xz_prism(
+        f"{side}_Controller_USB_C_Cavity",
+        cavity_outline,
+        shell_front_y + 0.04,
+        shell_front_y + 0.15,
+        collection,
+        materials["usb_cavity"],
+    )
+    cavity["usb_c_part"] = "receptacle_cavity"
+    parent_local(cavity, assembly)
+    mark_generated(cavity, side, "usb_c_cavity", "controller")
+
+    tongue_outline = rounded_rect_xz_points(
+        center_x,
+        center_z,
+        USB_C_TONGUE_WIDTH,
+        USB_C_TONGUE_HEIGHT,
+        USB_C_TONGUE_RADIUS,
+        segments_per_corner=5,
+    )
+    tongue = create_xz_prism(
+        f"{side}_Controller_USB_C_Tongue",
+        tongue_outline,
+        shell_front_y - 1.20,
+        shell_front_y + 0.18,
+        collection,
+        materials["usb_tongue"],
+    )
+    tongue["usb_c_part"] = "center_tongue"
+    parent_local(tongue, assembly)
+    mark_generated(tongue, side, "usb_c_tongue", "controller")
+
+    contact_vertices: list[tuple[float, float, float]] = []
+    contact_faces: list[tuple[int, ...]] = []
+    first_contact_x = center_x - USB_C_CONTACT_PITCH * (USB_C_CONTACT_COUNT_PER_SIDE - 1) / 2
+    for row_z in (center_z - 0.19, center_z + 0.19):
+        for index in range(USB_C_CONTACT_COUNT_PER_SIDE):
+            append_box_geometry(
+                contact_vertices,
+                contact_faces,
+                (
+                    first_contact_x + index * USB_C_CONTACT_PITCH,
+                    shell_front_y + 0.205,
+                    row_z,
+                ),
+                (0.22, 0.045, 0.055),
+            )
+    contact_mesh = bpy.data.meshes.new(f"{side}_Controller_USB_C_Contacts_Mesh")
+    contact_mesh.from_pydata(contact_vertices, [], contact_faces)
+    contact_mesh.materials.append(materials["usb_contact"])
+    contact_mesh.update()
+    contacts = bpy.data.objects.new(f"{side}_Controller_USB_C_Contacts", contact_mesh)
+    collection.objects.link(contacts)
+    contacts["usb_c_part"] = "signal_contacts"
+    contacts["contact_count"] = USB_C_CONTACT_COUNT_PER_SIDE * 2
+    contacts["contact_pitch_mm"] = USB_C_CONTACT_PITCH
+    parent_local(contacts, assembly)
+    mark_generated(contacts, side, "usb_c_contacts", "controller")
+    return shell
+
+
 def create_battery_label(
     side: str,
     battery: bpy.types.Object,
@@ -599,19 +880,9 @@ def create_controller(
     for obj in (rf_pcb, shield, antenna):
         obj["rf_soc"] = "nRF52840"
 
-    conthrough_center_x = selected_conthrough_center_x(footprint)
-    usb = create_component_box(
-        side, assembly, collection, materials, "USB_C", 0.0,
-        55.80, 3.25, (8.9, 7.0), "metal", bevel=0.35,
-        absolute_x=conthrough_center_x,
-    )
-    usb["connector_type"] = "USB Type-C"
-    port = create_component_box(
-        side, assembly, collection, materials, "USB_C_Opening", 0.0, 59.15,
-        1.45, (6.4, 0.30), "black", bevel=0.12,
-        stack_below=0.975,
-        absolute_x=conthrough_center_x,
-    )
+    # The connector is registered to the centre of the lower-case aperture.
+    # It is not concentric with the selected conthrough rows on this PCB.
+    create_usb_c_receptacle(side, assembly, collection, materials, CASE_USB_X[side])
 
     jst = create_component_box(
         side, assembly, collection, materials, "JST_PH_2P", 52.2, 34.9, 4.10, (7.6, 8.4), "white", bevel=0.25
@@ -993,13 +1264,22 @@ def build_modules(*, save: bool = True, setup_exploded: bool = True) -> dict:
     clean_generated(collection)
 
     materials = {
-        "controller_pcb": ensure_material("AutoKDK_PCB_Green", (0.015, 0.31, 0.18, 1), roughness=0.34),
+        # Keep the Auto-KDK board on the same dark-green solder mask as the
+        # main switch PCB in every exported colorway.
+        "controller_pcb": ensure_material(
+            "AutoKDK_PCB_Green",
+            MAIN_PCB_SOLDER_MASK_COLOR,
+            roughness=MAIN_PCB_SOLDER_MASK_ROUGHNESS,
+        ),
         "sensor_pcb": ensure_material("MouseSensor_PCB_Green", (0.018, 0.34, 0.17, 1), roughness=0.34),
         "dark_pcb": ensure_material("Controller_Module_PCB", (0.018, 0.035, 0.030, 1), roughness=0.40),
         "pad": ensure_material("Controller_Gold_Pads", (0.78, 0.47, 0.08, 1), roughness=0.24, metallic=0.78),
         "gold": ensure_material("Conthrough_Gold_Alloy", (0.86, 0.51, 0.12, 1), roughness=0.20, metallic=0.88),
         "metal": ensure_material("Controller_Shield_Metal", (0.60, 0.63, 0.65, 1), roughness=0.30, metallic=0.82),
         "black": ensure_material("Controller_Component_Black", (0.010, 0.014, 0.018, 1), roughness=0.38),
+        "usb_cavity": ensure_material("USB_C_Cavity_Black", (0.002, 0.003, 0.004, 1), roughness=0.32),
+        "usb_tongue": ensure_material("USB_C_Tongue_Dark", (0.018, 0.022, 0.026, 1), roughness=0.42),
+        "usb_contact": ensure_material("USB_C_Contact_Copper", (0.42, 0.25, 0.065, 1), roughness=0.34, metallic=0.62),
         "white": ensure_material("Connector_White", (0.86, 0.84, 0.75, 1), roughness=0.52),
         "battery": ensure_material("LiPo_Silver_Pouch", (0.55, 0.58, 0.61, 1), roughness=0.42, metallic=0.55),
         "label": ensure_material("LiPo_Label_Black", (0.015, 0.018, 0.020, 1), roughness=0.62),
@@ -1058,6 +1338,12 @@ def build_modules(*, save: bool = True, setup_exploded: bool = True) -> dict:
             CONTROLLER_THICKNESS,
         ],
         "sensor_dimensions_mm": [SENSOR_LENGTH, SENSOR_WIDTH, SENSOR_THICKNESS],
+        "usb_c_receptacle": {
+            "shell_opening_mm": [USB_C_SHELL_OPENING_WIDTH, USB_C_SHELL_OPENING_HEIGHT],
+            "shell_length_mm": 6.20,
+            "contact_count": USB_C_CONTACT_COUNT_PER_SIDE * 2,
+            "contact_pitch_mm": USB_C_CONTACT_PITCH,
+        },
         "fpc": {"pins": FPC_PIN_COUNT, "pitch_mm": FPC_PITCH, "width_mm": FPC_WIDTH},
         "sides": summaries,
         "exploded_view": exploded_summary,

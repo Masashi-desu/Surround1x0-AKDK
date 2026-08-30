@@ -216,21 +216,38 @@ def verify() -> dict:
         )
         case_anchors = measure_case_anchors(builder, side)
         usb = bpy.data.objects.get(f"{side}_Controller_USB_C")
+        usb_mouth = bpy.data.objects.get(f"{side}_Controller_USB_C_Mouth")
+        usb_cavity = bpy.data.objects.get(f"{side}_Controller_USB_C_Cavity")
+        usb_tongue = bpy.data.objects.get(f"{side}_Controller_USB_C_Tongue")
+        usb_contacts = bpy.data.objects.get(f"{side}_Controller_USB_C_Contacts")
         actuator = bpy.data.objects.get(f"{side}_Controller_Power_Switch_Actuator")
         battery = bpy.data.objects.get(f"{side}_Controller_LiPo_400mAh")
         housings = [
             bpy.data.objects.get(f"{side}_Conthrough_Row_{index}_Housing")
             for index in (1, 2)
         ]
-        if usb is None or actuator is None or battery is None or any(item is None for item in housings):
+        if (
+            usb is None
+            or usb_mouth is None
+            or usb_cavity is None
+            or usb_tongue is None
+            or usb_contacts is None
+            or actuator is None
+            or battery is None
+            or any(item is None for item in housings)
+        ):
             raise RuntimeError(f"Missing {side} case-alignment component")
         usb_bounds = local_bounds(usb)
+        usb_mouth_bounds = local_bounds(usb_mouth)
+        usb_cavity_bounds = local_bounds(usb_cavity)
+        usb_tongue_bounds = local_bounds(usb_tongue)
         board_bounds = local_bounds(board)
         actuator_bounds = local_bounds(actuator)
         battery_bounds = local_bounds(battery)
         housing_bounds = [local_bounds(item) for item in housings]
         usb_center = center_from_bounds(usb_bounds)
         actuator_center = center_from_bounds(actuator_bounds)
+        case_usb_center = Vector(case_anchors["usb_center_mm"])
         case_slot_center = Vector(case_anchors["power_slot_center_mm"])
         usb_clearances_xz = [
             usb_bounds[0].x - case_anchors["usb_min_mm"][0],
@@ -256,6 +273,7 @@ def verify() -> dict:
             "controller_bottom_z_mm": builder.CONTROLLER_BOTTOM_Z,
             "case_anchors": case_anchors,
             "usb_center_mm": list(usb_center),
+            "usb_aperture_horizontal_center_error_mm": abs(usb_center.x - case_usb_center.x),
             "usb_bounds_mm": {"min": list(usb_bounds[0]), "max": list(usb_bounds[1])},
             "usb_aperture_clearances_xz_mm": usb_clearances_xz,
             "usb_minimum_aperture_clearance_xz_mm": min(usb_clearances_xz),
@@ -265,6 +283,37 @@ def verify() -> dict:
                 and usb_bounds[0].z >= case_anchors["usb_min_mm"][2] - 0.01
                 and usb_bounds[1].z <= case_anchors["usb_max_mm"][2] + 0.01
             ),
+            "usb_receptacle": {
+                "case_outer_wall_y_mm": case_anchors["usb_center_mm"][1],
+                "mouth_outer_face_y_mm": usb_mouth_bounds[1].y,
+                "mouth_case_recess_mm": case_anchors["usb_center_mm"][1] - usb_mouth_bounds[1].y,
+                "shell_dimensions_mm": [
+                    usb_bounds[1].x - usb_bounds[0].x,
+                    usb_bounds[1].y - usb_bounds[0].y,
+                    usb_bounds[1].z - usb_bounds[0].z,
+                ],
+                "mouth_dimensions_mm": [
+                    usb_mouth_bounds[1].x - usb_mouth_bounds[0].x,
+                    usb_mouth_bounds[1].y - usb_mouth_bounds[0].y,
+                    usb_mouth_bounds[1].z - usb_mouth_bounds[0].z,
+                ],
+                "mouth_opening_mm": [
+                    float(usb_mouth.get("opening_width_mm", 0)),
+                    float(usb_mouth.get("opening_height_mm", 0)),
+                ],
+                "cavity_dimensions_mm": [
+                    usb_cavity_bounds[1].x - usb_cavity_bounds[0].x,
+                    usb_cavity_bounds[1].y - usb_cavity_bounds[0].y,
+                    usb_cavity_bounds[1].z - usb_cavity_bounds[0].z,
+                ],
+                "tongue_dimensions_mm": [
+                    usb_tongue_bounds[1].x - usb_tongue_bounds[0].x,
+                    usb_tongue_bounds[1].y - usb_tongue_bounds[0].y,
+                    usb_tongue_bounds[1].z - usb_tongue_bounds[0].z,
+                ],
+                "contact_count": int(usb_contacts.get("contact_count", 0)),
+                "contact_pitch_mm": float(usb_contacts.get("contact_pitch_mm", 0)),
+            },
             "pcb_case_wall_recess_mm": case_anchors["usb_center_mm"][1] - board_bounds[1].y,
             "pcb_y_bounds_mm": [board_bounds[0].y, board_bounds[1].y],
             "power_actuator_center_mm": list(actuator_center),
@@ -435,6 +484,59 @@ def verify() -> dict:
         raise RuntimeError(f"Controller vertical gap mismatch: {summary}")
     if any(not item["usb_inside_case_aperture_xz"] for item in controller_summaries.values()):
         raise RuntimeError(f"USB-C does not fit lower-case aperture: {summary}")
+    if any(
+        item["usb_aperture_horizontal_center_error_mm"] > 0.002
+        for item in controller_summaries.values()
+    ):
+        raise RuntimeError(f"USB-C is not horizontally centred in lower-case aperture: {summary}")
+    for item in controller_summaries.values():
+        receptacle = item["usb_receptacle"]
+        if not math.isclose(
+            receptacle["mouth_opening_mm"][0],
+            builder.USB_C_SHELL_OPENING_WIDTH,
+            abs_tol=0.002,
+        ) or not math.isclose(
+            receptacle["mouth_opening_mm"][1],
+            builder.USB_C_SHELL_OPENING_HEIGHT,
+            abs_tol=0.002,
+        ):
+            raise RuntimeError(f"USB-C shell opening mismatch: {summary}")
+        if not math.isclose(
+            receptacle["shell_dimensions_mm"][1],
+            builder.USB_C_SHELL_DEPTH,
+            abs_tol=0.002,
+        ):
+            raise RuntimeError(f"USB-C shell length mismatch: {summary}")
+        if not math.isclose(
+            receptacle["tongue_dimensions_mm"][0],
+            builder.USB_C_TONGUE_WIDTH,
+            abs_tol=0.002,
+        ) or not math.isclose(
+            receptacle["tongue_dimensions_mm"][2],
+            builder.USB_C_TONGUE_HEIGHT,
+            abs_tol=0.002,
+        ):
+            raise RuntimeError(f"USB-C tongue mismatch: {summary}")
+        if receptacle["contact_count"] != builder.USB_C_CONTACT_COUNT_PER_SIDE * 2:
+            raise RuntimeError(f"USB-C contact count mismatch: {summary}")
+        if not math.isclose(
+            receptacle["contact_pitch_mm"],
+            builder.USB_C_CONTACT_PITCH,
+            abs_tol=0.002,
+        ):
+            raise RuntimeError(f"USB-C contact pitch mismatch: {summary}")
+        expected_recess = (
+            receptacle["case_outer_wall_y_mm"]
+            - (builder.USB_C_SHELL_FRONT_Y + builder.USB_C_MOUTH_DEPTH)
+        )
+        if receptacle["mouth_case_recess_mm"] < builder.USB_C_FACE_RECESS - 0.002:
+            raise RuntimeError(f"USB-C mouth protrudes through lower-case wall: {summary}")
+        if not math.isclose(
+            receptacle["mouth_case_recess_mm"],
+            expected_recess,
+            abs_tol=0.002,
+        ):
+            raise RuntimeError(f"USB-C mouth wall-recess target mismatch: {summary}")
     if summary["case_alignment"]["minimum_pcb_case_wall_recess_mm"] < 0.75:
         raise RuntimeError(f"Controller PCB protrudes through lower-case wall: {summary}")
     if not math.isclose(
