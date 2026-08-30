@@ -82,6 +82,8 @@ const colorways = {
     case: '#090b0f',
     keycap: '#14171c',
     accent: '#343b43',
+    homingHigh: '#e4e8ed',
+    homingLow: '#e4e8ed',
     legend: '#e4e8ed',
     trackball: '#5b1424',
     swatches: ['#101216', '#5b1424', '#8ea0ad'],
@@ -90,15 +92,19 @@ const colorways = {
     case: '#d7d0be',
     keycap: '#e7dfcd',
     accent: '#8b9194',
+    homingHigh: '#8b9194',
+    homingLow: '#e7dfcd',
     legend: '#263642',
-    trackball: '#5b1424',
-    swatches: ['#e7dfcd', '#8b9194', '#5b1424'],
+    trackball: '#8b9194',
+    swatches: ['#e7dfcd', '#8b9194', '#6f767a'],
   },
 }
 
 function classifyMaterial(material) {
   const name = material.name.toLowerCase()
   if (name.includes('trackball')) return 'trackball'
+  if (name.includes('keycap_high_homing_bar')) return 'homingHigh'
+  if (name.includes('keycap_low_homing_bar')) return 'homingLow'
   if (name.includes('legend')) return 'legend'
   if (name.includes('keycap_cool') || name.includes('accent')) return 'accent'
   if (name.includes('keycap')) return 'keycap'
@@ -120,7 +126,13 @@ function setColorway(name) {
       }
     } else {
       material.color.set(colorways[name][category])
-      if (category === 'case' || category === 'keycap' || category === 'accent') {
+      if (
+        category === 'case' ||
+        category === 'keycap' ||
+        category === 'accent' ||
+        category === 'homingHigh' ||
+        category === 'homingLow'
+      ) {
         material.roughness = 0.56
         material.metalness = 0
       }

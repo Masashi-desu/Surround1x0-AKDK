@@ -1,0 +1,134 @@
+{
+  "kind": "keycap-maker/project",
+  "schemaVersion": 1,
+  "name": "Surround1x0-AKDK-Keycap",
+  "savedAt": "2026-08-30T04:17:50.316Z",
+  "activeKeycapId": "keycap-519426ae-e6cc-4fe5-8f94-6a90b6cfe8bc",
+  "keycaps": [
+    {
+      "id": "keycap-519426ae-e6cc-4fe5-8f94-6a90b6cfe8bc",
+      "name": "Hiprofile-1u-Homing",
+      "jsonPath": "keycaps/Hiprofile-1u-Homing-519426ae.json",
+      "previewPath": "keycaps/Hiprofile-1u-Homing-519426ae.png",
+      "threeMfPath": "3mf/Hiprofile-1u-Homing-519426ae.3mf",
+      "displayOrder": 0,
+      "previewViewState": {
+        "direction": [
+          0.6256538744518053,
+          0.5199095576430494,
+          0.5815937424481571
+        ],
+        "distanceScale": 2.269625519771929,
+        "targetScale": [
+          0,
+          0,
+          0
+        ],
+        "viewOffsetRatio": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "keycap-170342f3-8767-4045-963f-a06f9524e3a8",
+      "name": "Hiprofile-1u",
+      "jsonPath": "keycaps/Hiprofile-1u-170342f3.json",
+      "previewPath": "keycaps/Hiprofile-1u-170342f3.png",
+      "threeMfPath": "3mf/Hiprofile-1u-170342f3.3mf",
+      "displayOrder": 1,
+      "previewViewState": {
+        "direction": [
+          0.1978643510817657,
+          -0.6163827523348725,
+          0.7621823936533034
+        ],
+        "distanceScale": 2.2696255197719317,
+        "targetScale": [
+          0,
+          0,
+          0
+        ],
+        "viewOffsetRatio": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "keycap-16350801-7ddc-466e-9a3e-d1fe3d39fce5",
+      "name": "Hiprofile-1.5u",
+      "jsonPath": "keycaps/Hiprofile-1.5u-16350801.json",
+      "previewPath": "keycaps/Hiprofile-1.5u-16350801.png",
+      "threeMfPath": "3mf/Hiprofile-1.5u-16350801.3mf",
+      "displayOrder": 2,
+      "previewViewState": {
+        "direction": [
+          0.044741173620341884,
+          -0.8737033797663771,
+          0.4843971836911152
+        ],
+        "distanceScale": 2.7293321473908323,
+        "targetScale": [
+          0,
+          0,
+          0
+        ],
+        "viewOffsetRatio": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "keycap-1a3ae35f-fbf1-4d11-8a74-338838e049e8",
+      "name": "Lowprofile-1u-Homing",
+      "jsonPath": "keycaps/Lowprofile-1u-Homing-1a3ae35f.json",
+      "previewPath": "keycaps/Lowprofile-1u-Homing-1a3ae35f.png",
+      "threeMfPath": "3mf/Lowprofile-1u-Homing-1a3ae35f.3mf",
+      "displayOrder": 3,
+      "previewViewState": {
+        "direction": [
+          0.0884511474510541,
+          -0.6612735969961316,
+          0.7449118232585582
+        ],
+        "distanceScale": 2.2672983822428163,
+        "targetScale": [
+          0,
+          0,
+          0
+        ],
+        "viewOffsetRatio": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "keycap-93ce7806-b6b6-4fd4-9d8e-53b562434ccc",
+      "name": "Lowprofile-1u",
+      "jsonPath": "keycaps/Lowprofile-1u-93ce7806.json",
+      "previewPath": "keycaps/Lowprofile-1u-93ce7806.png",
+      "threeMfPath": "3mf/Lowprofile-1u-93ce7806.3mf",
+      "displayOrder": 4,
+      "previewViewState": {
+        "direction": [
+          0.26487562768219763,
+          -0.49890556626339266,
+          0.8251873349799822
+        ],
+        "distanceScale": 2.7293321473908367,
+        "targetScale": [
+          0,
+          0,
+          0
+        ],
+        "viewOffsetRatio": [
+          0,
+          0
+        ]
+      }
+    }
+  ]
+}
