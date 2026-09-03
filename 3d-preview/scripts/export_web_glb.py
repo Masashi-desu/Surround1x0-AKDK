@@ -16,12 +16,12 @@ EXPORTS = (
 
 COLORWAYS = {
     "black": {
-        "Case_Warm_Ivory_Print": (0.015, 0.018, 0.023, 1.0),
-        "Keycap_Warm_Ivory_PBT": (0.025, 0.030, 0.038, 1.0),
-        "Keycap_Cool_Gray_Accent": (0.025, 0.030, 0.038, 1.0),
+        "Case_Warm_Ivory_Print": (0.002731743, 0.003346536, 0.004776953, 1.0),
+        "Keycap_Warm_Ivory_PBT": (0.006995410, 0.008568126, 0.011612245, 1.0),
+        "Keycap_Cool_Gray_Accent": (0.006995410, 0.008568126, 0.011612245, 1.0),
         "Keycap_High_Homing_Bar_Contrast": (0.94, 0.947, 0.956, 1.0),
         "Keycap_Low_Homing_Bar_Contrast": (0.94, 0.947, 0.956, 1.0),
-        "Trackball_Gunmetal": (0.168269, 0.028426, 0.038204, 1.0),
+        "Trackball_Gunmetal": (0.104616484, 0.006995410, 0.017641954, 1.0),
     },
     "white": {
         "Case_Warm_Ivory_Print": (0.72, 0.65, 0.50, 1.0),

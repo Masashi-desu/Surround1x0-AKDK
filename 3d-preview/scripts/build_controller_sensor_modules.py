@@ -1271,7 +1271,7 @@ def build_modules(*, save: bool = True, setup_exploded: bool = True) -> dict:
             MAIN_PCB_SOLDER_MASK_COLOR,
             roughness=MAIN_PCB_SOLDER_MASK_ROUGHNESS,
         ),
-        "sensor_pcb": ensure_material("MouseSensor_PCB_Green", (0.018, 0.34, 0.17, 1), roughness=0.34),
+        "sensor_pcb": ensure_material("MouseSensor_PCB_Green", MAIN_PCB_SOLDER_MASK_COLOR, roughness=MAIN_PCB_SOLDER_MASK_ROUGHNESS),
         "dark_pcb": ensure_material("Controller_Module_PCB", (0.018, 0.035, 0.030, 1), roughness=0.40),
         "pad": ensure_material("Controller_Gold_Pads", (0.78, 0.47, 0.08, 1), roughness=0.24, metallic=0.78),
         "gold": ensure_material("Conthrough_Gold_Alloy", (0.86, 0.51, 0.12, 1), roughness=0.20, metallic=0.88),
